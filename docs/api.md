@@ -28,19 +28,19 @@ Get a json object with all the information about a city.
     {
 		"data" : {
 			"city" : "<name of city>",
-        	"similarPlaces" : [
-        		"<first similar city>",
-        		"<second similar city>",
-        		"<third similar city>",
-        		"<fourth similar city>" 
-        	],
-        	"stats" : {
-        		"population" : <int, population of city>,
-        		"weather" : {},
-        		.
-        		.
-        		.
-        	}
+			"similarCities" : [
+				"<first similar city name>",
+				"<second similar city name>",
+				"<third similar city name>",
+				"<fourth similar city name>" 
+			],
+			"stats" : {
+				"population" : 95951,
+				"weather" : {},
+				.
+				.
+				.
+			}
 		}
     }
     ```
