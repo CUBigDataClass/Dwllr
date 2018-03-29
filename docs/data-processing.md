@@ -20,4 +20,4 @@ In order to provide flexibility surrounding the running of queries (buffer in me
 
 
 ## Data Format From Iterator
-This still needs to be defined.
+This will be an ordered list, with the ordering of the fields in the dataset preserved.
