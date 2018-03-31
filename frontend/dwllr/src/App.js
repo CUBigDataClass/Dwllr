@@ -18,13 +18,9 @@ class App extends Component {
   }
 
   callAPI() {
-    axios.get(this.state.apiURL, {
-      headers: {
-        'Access-Control-Allow-Origin': '*',
-      }
-    })
+    axios.get(this.state.apiURL)
     .then(res => {
-      this.setState({ response: JSON.stringify(res.data) });
+      this.setState({ err: false, response: JSON.stringify(res.data) });
     })
     .catch(err => {
       this.setState({ err: true, response: JSON.stringify(err) });
