@@ -18,6 +18,7 @@ public class CsvDataRowIterator implements DataRowIterator {
         this.datasetFileName = datasetFileName;
         try {
             File file = new File(datasetFileName);
+            System.out.println(datasetFileName);
             this.reader = new BufferedReader(new FileReader(file));
         } catch (IOException e) {
             throw new DatasetException("File not found for dataset: " + datasetFileName);

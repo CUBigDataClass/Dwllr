@@ -15,7 +15,7 @@ public class PopulationDataRowParser implements DataRowParser {
                 + " WHERE zip = " + dataRow.get(0) + ";";
 
         // Wrap queryString into Query here
-
-        return new Query("TEMP"); // This is to make compiler happy with outdated version of Query class
+        String column = "population";
+        return new Query(dataRow.get(0), column, dataRow.get(1));
     }
 }
