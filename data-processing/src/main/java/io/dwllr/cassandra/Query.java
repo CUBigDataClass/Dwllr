@@ -5,14 +5,10 @@ import com.datastax.driver.core.Session;
 
 import java.util.*;
 public class Query {
-    static final String KEYSPACE = "Dwllr";
     static final String TABLE = "data";
-    static final String IP = "127.0.0.1";
     String zipCode;
     String columnName;
     String columnValue;
-    Cluster cluster;
-    Session session;
     List<String> columns = new ArrayList<String>();
     String finalQuery = "UPDATE " + TABLE + " SET ";
     public Query(String zipCode, String columnName, String columnValue){
@@ -25,15 +21,9 @@ public class Query {
         this.columnName = "empty";
         this.columnValue = columnValue;
     }
-    public void sendQuery(Query query){
+    public String getQuery(){
         createQuery();
-        System.out.println(finalQuery);
-        cluster = Cluster.builder().addContactPoint(IP).build();
-        session = cluster.connect(KEYSPACE);
-        session.execute(finalQuery);
-        //session.close();
-        //cluster.close();
-
+        return finalQuery;
     }
     private void createQuery() {
         if(this.columnName.equals("empty")){

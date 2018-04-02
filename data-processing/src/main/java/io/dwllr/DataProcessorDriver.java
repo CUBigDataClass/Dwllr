@@ -1,56 +1,63 @@
 package io.dwllr;
-
+import io.dwllr.cassandra.Connect;
 import io.dwllr.processor.CsvDataRowIterator;
 import io.dwllr.cassandra.Query;
 import io.dwllr.processor.PopulationDataRowParser;
 import io.dwllr.processor.ZipDataRowParser;
-
 import java.util.List;
 import java.util.Optional;
 
 public class DataProcessorDriver {
-
     public static void main(String[] args) {
 
+        Connect connection = new Connect();
+        //Will need to set these filepaths to wherever the file is located. Will include the file locations in the config when its created.
+        String zipCodeFile = "zipCodes.csv";
+        String populationFile = "population.csv";
+
         //TODO: Set this up to work with config and java reflections. Code setup right now to establish steel thread.
+
         //This is for adding the zip codes to the db
-        String datasetFileName = "/home/user/Dropbox/Junior/bigData/Dwllr/data-processing/src/main/java/io/dwllr/processor/postal_codes";
         try{
-            CsvDataRowIterator iterator= new CsvDataRowIterator(datasetFileName);
+            CsvDataRowIterator iterator= new CsvDataRowIterator(zipCodeFile);
             Optional<List<String>> row = iterator.getNextRow();
             ZipDataRowParser zip = new ZipDataRowParser();
+            Query query;
             while(row.isPresent()){
-                Query query = zip.getQueryFromData(row.get());
+                query = zip.getQueryFromData(row.get());
                 try{
-                    query.sendQuery(query);
+                    String finalQuery = query.getQuery();
+                    connection.query(finalQuery);
                 } catch (Exception e){
                     System.out.println("QUERY FAILED");
                 }
                 row = iterator.getNextRow();
             }
         } catch (Exception e) {
-            System.out.println("Error creating iterator with filename");
-        }
-        //This is for adding the population to the db
-        datasetFileName = "/home/user/Dropbox/Junior/bigData/Dwllr/data-processing/src/main/java/io/dwllr/processor/population.csv";
-        try{
-            CsvDataRowIterator iterator= new CsvDataRowIterator(datasetFileName);
-            Optional<List<String>> row = iterator.getNextRow();
-            PopulationDataRowParser zip = new PopulationDataRowParser();
-            while(row.isPresent()){
-                Query query = zip.getQueryFromData(row.get());
-                try{
-                    query.sendQuery(query);
-                } catch (Exception e){
-                    System.out.println("QUERY FAILED");
-                }
-                row = iterator.getNextRow();
-            }
-        } catch (Exception e) {
-            //Not really sure what else to put here for now
             System.out.println("Error creating iterator with filename");
         }
 
+
+        //This is for adding the population to the db
+        try{
+            CsvDataRowIterator iterator= new CsvDataRowIterator(populationFile);
+            Optional<List<String>> row = iterator.getNextRow();
+            PopulationDataRowParser pop = new PopulationDataRowParser();
+            Query query;
+            while(row.isPresent()){
+                query = pop.getQueryFromData(row.get());
+                try{
+                    String finalQuery = query.getQuery();
+                    connection.query(finalQuery);
+                } catch (Exception e){
+                    System.out.println("QUERY FAILED");
+                }
+                row = iterator.getNextRow();
+            }
+        } catch (Exception e) {
+            System.out.println("Error creating iterator with filename");
+        }
+        connection.close();
         /*
         Driver pseudocode:
 
