@@ -5,43 +5,52 @@ import com.datastax.driver.core.Session;
 
 import java.util.*;
 public class Query {
-    static final String KEYSPACE = "test";
-    static final String TABLE = "sampledata";
-    static final String IP = "127.0.0.1";
-    static final String locationColumn = "location";
-    Map <String, String> queryValues = new HashMap<String, String>();
-    String finalQuery = "INSERT INTO " + TABLE + " (";
-    public Query(String zipCode){
-        this.queryValues.put(locationColumn, zipCode);
+    static final String TABLE = "data";
+    String zipCode;
+    String columnName;
+    String columnValue;
+    List<String> columns = new ArrayList<String>();
+    String finalQuery = "UPDATE " + TABLE + " SET ";
+    public Query(String zipCode, String columnName, String columnValue){
+        this.zipCode = zipCode;
+        this.columnName = columnName;
+        this.columnValue = columnValue;
     }
-    public void addValue(String column, String value){
-        this.queryValues.put(column, value);
+    public Query(String zipCode, String columnValue){
+        this.zipCode = zipCode;
+        this.columnName = "empty";
+        this.columnValue = columnValue;
     }
-    public void sendQuery(){
-        Cluster cluster;
-        Session session;
+    public String getQuery(){
         createQuery();
-        cluster = Cluster.builder().addContactPoint(IP).build();
-        session = cluster.connect(KEYSPACE);
-        session.execute(finalQuery);
-        System.out.println(finalQuery);
+        return finalQuery;
     }
-    private void createQuery(){
-        addAttributeNames();
-        addValues();
-    }
-    private void  addAttributeNames(){
-        for (String key : queryValues.keySet()){
-            finalQuery = finalQuery + key+",";
+    private void createQuery() {
+        if(this.columnName.equals("empty")){
+            createColumnList();
+            finalQuery = "INSERT INTO " + TABLE + " (";
+            for(String column : columns){
+                finalQuery = finalQuery + column +", ";
+            }
+            finalQuery = finalQuery.substring(0, finalQuery.length()-2) + ") ";
+            finalQuery = finalQuery + "VALUES (";
+            for (int i=0; i<columns.size();i++){
+                if (i == 0){
+                    finalQuery = finalQuery +"'"+zipCode +"', ";
+                }
+                else{
+                    finalQuery = finalQuery + "'empty',";
+                }
+            }
+            finalQuery = finalQuery.substring(0, finalQuery.length()-1) + ")";
         }
-        finalQuery = finalQuery.substring(0, finalQuery.length()-1) + ") ";
-    }
-    private void addValues(){
-        finalQuery = finalQuery + "VALUES (";
-        for(String value : queryValues.values()){
-            finalQuery = finalQuery + "'"+value + "',";
+        else{
+            finalQuery = finalQuery + columnName + " = " + "'"+columnValue+"'" + " WHERE zip = " + "'"+zipCode+"'";
         }
-        finalQuery = finalQuery.substring(0, finalQuery.length()-1) + ")";
+    }
+    private void createColumnList(){
+        columns.add("zip");
+        columns.add("population");
     }
 
 }

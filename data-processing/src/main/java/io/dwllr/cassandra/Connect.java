@@ -6,17 +6,14 @@ import com.datastax.driver.core.Session;
 http://www.baeldung.com/cassandra-with-java
 */
 public class Connect {
-    private Cluster cluster;
-    private Session session;
+    static final String KEYSPACE = "Dwllr";
+    static final String TABLE = "data";
+    static final String IP = "127.0.0.1";
+    Cluster cluster = Cluster.builder().addContactPoint(IP).build();
+    Session session = cluster.connect(KEYSPACE);
 
-    public void connectToCassandra(String contactPoint,int portNum){
-        Cluster.Builder builder = Cluster.builder().addContactPoint(contactPoint);
-        builder.withPort(portNum);
-        cluster = builder.build();
-        session = cluster.connect();
-    }
-    public Session getSession(){
-        return this.session;
+    public void query(String finalQuery){
+        session.execute(finalQuery);
     }
     public void close(){
         session.close();
