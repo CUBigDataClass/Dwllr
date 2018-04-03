@@ -5,7 +5,7 @@ import com.datastax.driver.core.Session;
 
 import java.util.*;
 public class Query {
-    static final String TABLE = "data";
+    static final String TABLE = "stats";
     String zipCode;
     String columnName;
     String columnValue;
@@ -20,6 +20,12 @@ public class Query {
         this.zipCode = zipCode;
         this.columnName = "empty";
         this.columnValue = columnValue;
+    }
+    public Query(String query){
+        finalQuery = query;
+    }
+    public String getFinalQuery(){
+        return finalQuery;
     }
     public String getQuery(){
         createQuery();
@@ -36,16 +42,16 @@ public class Query {
             finalQuery = finalQuery + "VALUES (";
             for (int i=0; i<columns.size();i++){
                 if (i == 0){
-                    finalQuery = finalQuery +"'"+zipCode +"', ";
+                    finalQuery = finalQuery +zipCode +", ";
                 }
                 else{
-                    finalQuery = finalQuery + "'empty',";
+                    finalQuery = finalQuery + "0,";
                 }
             }
             finalQuery = finalQuery.substring(0, finalQuery.length()-1) + ")";
         }
         else{
-            finalQuery = finalQuery + columnName + " = " + "'"+columnValue+"'" + " WHERE zip = " + "'"+zipCode+"'";
+            finalQuery = finalQuery + columnName + " = " + "'"+columnValue+"'" + " WHERE zip = " +zipCode;
         }
     }
     private void createColumnList(){
