@@ -12,8 +12,8 @@ public class DataProcessorDriver {
 
         Connect connection = new Connect();
         //Will need to set these filepaths to wherever the file is located. Will include the file locations in the config when its created.
-        String zipCodeFile = "zipCodes.csv";
-        String populationFile = "population.csv";
+        String zipCodeFile = "/home/user/Documents/dataSets/us_postal_codes.csv";
+        String populationFile = "/home/user/Documents/dataSets/population.csv";
 
         //TODO: Set this up to work with config and java reflections. Code setup right now to establish steel thread.
 
@@ -47,7 +47,7 @@ public class DataProcessorDriver {
             while(row.isPresent()){
                 query = pop.getQueryFromData(row.get());
                 try{
-                    String finalQuery = query.getQuery();
+                    String finalQuery = query.getFinalQuery();
                     connection.query(finalQuery);
                 } catch (Exception e){
                     System.out.println("QUERY FAILED");
