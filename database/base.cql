@@ -4,5 +4,5 @@ use dwllr;
 
 CREATE TABLE IF NOT EXISTS stats (
    zip int PRIMARY KEY,
-   population bigint
+   population int
 );
