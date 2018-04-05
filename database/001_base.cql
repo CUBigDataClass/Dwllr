@@ -3,6 +3,6 @@ CREATE KEYSPACE IF NOT EXISTS dwllr WITH REPLICATION = { 'class' : 'SimpleStrate
 use dwllr;
 
 CREATE TABLE IF NOT EXISTS stats (
-   zip int PRIMARY KEY,
+   zip text PRIMARY KEY,
    population int
 );
