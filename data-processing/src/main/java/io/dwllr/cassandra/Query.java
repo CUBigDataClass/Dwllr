@@ -57,6 +57,7 @@ public class Query {
     private void createColumnList(){
         columns.add("zip");
         columns.add("population");
+        columns.add("unemployment");
     }
 
 }
