@@ -11,8 +11,8 @@ public class PopulationDataRowParser implements DataRowParser {
 
     @Override
     public Query getQueryFromData(List<String> dataRow) {
-        String queryString = "UPDATE stats SET population = " + dataRow.get(1)
-                + " WHERE zip = " + dataRow.get(0) + ";";
+        String queryString = "UPDATE stats SET population = '" + dataRow.get(1) + "'"
+                + " WHERE zip = '" + dataRow.get(0) + "';";
 
         // Wrap queryString into Query here
         return new Query(queryString);

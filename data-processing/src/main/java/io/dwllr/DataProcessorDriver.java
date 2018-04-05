@@ -27,6 +27,7 @@ public class DataProcessorDriver {
                 query = zip.getQueryFromData(row.get());
                 try{
                     String finalQuery = query.getQuery();
+                    System.out.println(finalQuery);
                     connection.query(finalQuery);
                 } catch (Exception e){
                     System.out.println("QUERY FAILED");
