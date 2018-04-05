@@ -4,5 +4,7 @@ use dwllr;
 
 CREATE TABLE IF NOT EXISTS stats (
    zip text PRIMARY KEY,
-   population int
+   population text,
+   unemployment text,
+   averageIncome text
 );
