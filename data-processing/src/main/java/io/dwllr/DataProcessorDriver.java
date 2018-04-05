@@ -1,10 +1,8 @@
 package io.dwllr;
 import io.dwllr.cassandra.Connect;
-import io.dwllr.processor.CsvDataRowIterator;
+import io.dwllr.processor.*;
 import io.dwllr.cassandra.Query;
-import io.dwllr.processor.PopulationDataRowParser;
-import io.dwllr.processor.UnemploymentDataRowParser;
-import io.dwllr.processor.ZipDataRowParser;
+
 import java.util.List;
 import java.util.Optional;
 
@@ -16,6 +14,7 @@ public class DataProcessorDriver {
         String zipCodeFile = "/home/user/Documents/dataSets/us_postal_codes.csv";
         String populationFile = "/home/user/Documents/dataSets/population.csv";
         String unemploymentFile = "/home/user/Documents/dataSets/unemployment.csv";
+        String averageIncomeFile = "/home/user/Documents/dataSets/averageIncome.csv";
 
         //TODO: Set this up to work with config and java reflections. Code setup right now to establish steel thread.
 
@@ -67,6 +66,46 @@ public class DataProcessorDriver {
             CsvDataRowIterator iterator= new CsvDataRowIterator(unemploymentFile);
             Optional<List<String>> row = iterator.getNextRow();
             UnemploymentDataRowParser pop = new UnemploymentDataRowParser();
+            Query query;
+            while(row.isPresent()){
+                query = pop.getQueryFromData(row.get());
+                try{
+                    String finalQuery = query.getFinalQuery();
+                    System.out.println(finalQuery);
+                    connection.query(finalQuery);
+                } catch (Exception e){
+                    System.out.println("QUERY FAILED");
+                }
+                row = iterator.getNextRow();
+            }
+        } catch (Exception e) {
+            System.out.println("Error creating iterator with filename");
+        }
+
+        try{
+            CsvDataRowIterator iterator= new CsvDataRowIterator(unemploymentFile);
+            Optional<List<String>> row = iterator.getNextRow();
+            UnemploymentDataRowParser pop = new UnemploymentDataRowParser();
+            Query query;
+            while(row.isPresent()){
+                query = pop.getQueryFromData(row.get());
+                try{
+                    String finalQuery = query.getFinalQuery();
+                    System.out.println(finalQuery);
+                    connection.query(finalQuery);
+                } catch (Exception e){
+                    System.out.println("QUERY FAILED");
+                }
+                row = iterator.getNextRow();
+            }
+        } catch (Exception e) {
+            System.out.println("Error creating iterator with filename");
+        }
+
+        try{
+            CsvDataRowIterator iterator= new CsvDataRowIterator(averageIncomeFile);
+            Optional<List<String>> row = iterator.getNextRow();
+            AverageIncomeDataRowParser pop = new AverageIncomeDataRowParser();
             Query query;
             while(row.isPresent()){
                 query = pop.getQueryFromData(row.get());

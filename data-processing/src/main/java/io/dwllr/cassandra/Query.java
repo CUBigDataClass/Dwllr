@@ -58,6 +58,7 @@ public class Query {
         columns.add("zip");
         columns.add("population");
         columns.add("unemployment");
+        columns.add("averageIncome");
     }
 
 }
