@@ -9,7 +9,7 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      apiURL: '/search',
+      apiURL: '/api/search',
       apiParams: {city: "80303"},
       response: 'api not called yet',
       err: 'api not called yet'
