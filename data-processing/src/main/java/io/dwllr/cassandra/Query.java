@@ -42,21 +42,23 @@ public class Query {
             finalQuery = finalQuery + "VALUES (";
             for (int i=0; i<columns.size();i++){
                 if (i == 0){
-                    finalQuery = finalQuery +zipCode +", ";
+                    finalQuery = finalQuery + "'"+zipCode +"', ";
                 }
                 else{
-                    finalQuery = finalQuery + "0,";
+                    finalQuery = finalQuery + "'empty',";
                 }
             }
             finalQuery = finalQuery.substring(0, finalQuery.length()-1) + ")";
         }
         else{
-            finalQuery = finalQuery + columnName + " = " + "'"+columnValue+"'" + " WHERE zip = " +zipCode;
+            finalQuery = finalQuery + columnName + " = " + "'"+columnValue+"'" + " WHERE zip = '" +zipCode + "'";
         }
     }
     private void createColumnList(){
         columns.add("zip");
         columns.add("population");
+        columns.add("unemployment");
+        columns.add("averageIncome");
     }
 
 }
