@@ -28,7 +28,6 @@ public class DataProcessorDriver {
                 query = zip.getQueryFromData(row.get());
                 try{
                     String finalQuery = query.getQuery();
-                    System.out.println(finalQuery);
                     connection.query(finalQuery);
                 } catch (Exception e){
                     System.out.println("QUERY FAILED");
@@ -50,7 +49,6 @@ public class DataProcessorDriver {
                 query = pop.getQueryFromData(row.get());
                 try{
                     String finalQuery = query.getFinalQuery();
-                    System.out.println(finalQuery);
                     connection.query(finalQuery);
                 } catch (Exception e){
                     System.out.println("QUERY FAILED");
@@ -71,27 +69,6 @@ public class DataProcessorDriver {
                 query = pop.getQueryFromData(row.get());
                 try{
                     String finalQuery = query.getFinalQuery();
-                    System.out.println(finalQuery);
-                    connection.query(finalQuery);
-                } catch (Exception e){
-                    System.out.println("QUERY FAILED");
-                }
-                row = iterator.getNextRow();
-            }
-        } catch (Exception e) {
-            System.out.println("Error creating iterator with filename");
-        }
-
-        try{
-            CsvDataRowIterator iterator= new CsvDataRowIterator(unemploymentFile);
-            Optional<List<String>> row = iterator.getNextRow();
-            UnemploymentDataRowParser pop = new UnemploymentDataRowParser();
-            Query query;
-            while(row.isPresent()){
-                query = pop.getQueryFromData(row.get());
-                try{
-                    String finalQuery = query.getFinalQuery();
-                    System.out.println(finalQuery);
                     connection.query(finalQuery);
                 } catch (Exception e){
                     System.out.println("QUERY FAILED");
@@ -111,7 +88,6 @@ public class DataProcessorDriver {
                 query = pop.getQueryFromData(row.get());
                 try{
                     String finalQuery = query.getFinalQuery();
-                    System.out.println(finalQuery);
                     connection.query(finalQuery);
                 } catch (Exception e){
                     System.out.println("QUERY FAILED");
