@@ -2,10 +2,12 @@ from flask import Flask, jsonify, request
 from cassandra.cluster import Cluster
 from cassandra.query import SimpleStatement
 from uwsgidecorators import postfork
+from flask_cors import CORS
 
 import time
 
 app = Flask(__name__)
+CORS(app)
 
 cluster = None
 session = None
