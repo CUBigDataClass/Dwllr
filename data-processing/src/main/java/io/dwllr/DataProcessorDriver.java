@@ -13,8 +13,8 @@ public class DataProcessorDriver {
         //Will need to set these filepaths to wherever the file is located. Will include the file locations in the config when its created.
         String zipCodeFile = "/datasets/us_postal_codes.csv";
         String populationFile = "/datasets/population.csv";
-        String unemploymentFile = "/home/user/Documents/dataSets/unemployment.csv";
-        String averageIncomeFile = "/home/user/Documents/dataSets/averageIncome.csv";
+        String unemploymentFile = "/datasets/unemployment.csv";
+        String averageIncomeFile = "/datasets/averageIncome.csv";
 
         //TODO: Set this up to work with config and java reflections. Code setup right now to establish steel thread.
 
