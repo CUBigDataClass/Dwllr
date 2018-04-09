@@ -1,11 +1,7 @@
 FROM tiangolo/uwsgi-nginx-flask:python3.6
 
-
-
-
-
-########### THIS IS WHAT WILL NEED TO BE CHANGED ###########
-########### THE FIRST ARG WILL NEED TO BE OUR APP FOLDER NAME ###########
-COPY ./app /app
+COPY ./app/requirements.txt /app/requirements.txt
 
 RUN pip install -r /app/requirements.txt
+
+COPY ./app/ /app/

@@ -1,0 +1,30 @@
+version: '3'
+services:
+  cassandra:
+    hostname: cassandra
+    image: cassandra:latest
+    command: /bin/bash -c "sleep 1 && echo ' -- Pausing to let system catch up ... -->' && /docker-entrypoint.sh cassandra -f"
+    expose:
+      - 7000
+      - 7001
+      - 7199
+      - 9042
+      - 9160
+    ports:
+      - '9042:9042'
+    volumes:
+      - './database/:/migrations'
+
+  processor:
+    build: data-processing/
+
+  api:
+    hostname: apiserver
+    build: data-retrieval/
+    ports:
+      - '3000:80'
+
+  web:
+    build: frontend/
+    ports:
+      - '0.0.0.0:80:80'

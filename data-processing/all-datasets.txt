@@ -1,0 +1,3 @@
+$us_postal_codes.csv~https://www.aggdata.com/download_sample.php?file=us_postal_codes.csv
+$population.csv~https://s3.amazonaws.com/SplitwiseBlogJB/2010+Census+Population+By+Zipcode+(ZCTA).csv
+$unemployment.csv~https://s3.amazonaws.com/SplitwiseBlogJB/Unemployment+Unsorted.csv
