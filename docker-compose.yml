@@ -26,5 +26,6 @@ services:
 
   web:
     build: frontend/
+    network_mode: "host"
     ports:
       - '0.0.0.0:80:80'

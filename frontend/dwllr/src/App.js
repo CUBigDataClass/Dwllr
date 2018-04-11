@@ -18,7 +18,9 @@ class App extends Component {
   }
 
   callAPI() {
-    axios.get(this.state.apiURL)
+    axios.get(this.state.apiURL, {
+      params: this.state.apiParams
+    })
     .then(res => {
       this.setState({ err: false, response: JSON.stringify(res.data) });
     })
@@ -44,6 +46,6 @@ class App extends Component {
 
     );
   }
-}
+} 
 
 export default App;
