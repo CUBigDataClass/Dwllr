@@ -1,7 +1,6 @@
 from flask import Flask, jsonify, request
 from cassandra.cluster import Cluster
 from cassandra.query import SimpleStatement
-from uwsgidecorators import postfork
 from flask_cors import CORS
 
 import time
@@ -9,15 +8,8 @@ import time
 app = Flask(__name__)
 CORS(app)
 
-cluster = None
-session = None
-
-@postfork
-def connect():
-    global session, prepared
-    cluster = Cluster(["cassandra"])
-    session = cluster.connect("dwllr")
-
+cluster = Cluster(["cassandra"])
+session = cluster.connect("dwllr")  
 
 @app.route("/api/search", methods=["GET"])
 def search():
@@ -58,4 +50,4 @@ def search():
     })
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=True, host='0.0.0.0', port=3000)
