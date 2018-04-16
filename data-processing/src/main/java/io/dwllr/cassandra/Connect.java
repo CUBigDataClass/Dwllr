@@ -8,7 +8,7 @@ http://www.baeldung.com/cassandra-with-java
 public class Connect {
     static final String KEYSPACE = "dwllr";
     static final String TABLE = "data";
-    static final String IP = "cassandra";
+    static final String IP = "127.0.0.1";
     Cluster cluster = Cluster.builder().addContactPoint(IP).build();
     Session session = cluster.connect(KEYSPACE);
 
