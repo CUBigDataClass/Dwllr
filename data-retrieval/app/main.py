@@ -3,24 +3,30 @@ from cassandra.cluster import Cluster
 from cassandra.query import SimpleStatement
 from flask_cors import CORS
 
-import time
+import os
 
 app = Flask(__name__)
 CORS(app)
 
-cluster = Cluster(["cassandra"])
+if os.environ.get("DWLLR_LOCAL", "false") == "true":
+    cluster = Cluster(["localhost"])
+else:
+    cluster = Cluster(["cassandra"])
+
 session = cluster.connect("dwllr")  
+
+def error(msg):
+    return jsonify({
+        "error": {
+            "message": msg
+        }
+    })  
 
 @app.route("/api/search", methods=["GET"])
 def search():
-
-    city = request.args.get("city", -1)
-    if city == -1:
-        return jsonify({
-            "error": {
-                "message": "missing city zip codes"
-            }
-        })
+    city = request.args.get("city", None)
+    if not city:
+        return error("missing city zip codes")
 
     try:
         print(city)
@@ -29,18 +35,11 @@ def search():
             (str(city), )
         )
     except Exception as e:
-        return jsonify({
-            "error": {
-                "message": repr(e)
-            }
-        })
+        return error(repr(e))
 
     if len(rv.current_rows) == 0:
-        return jsonify({
-            "error": {
-                "message": "zip code not found"
-            }
-        })
+        return error("zip code not found")
+
     return jsonify({
         "data": {
             "stats": {
