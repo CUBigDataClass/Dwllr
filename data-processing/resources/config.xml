@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+    <comment>Data Info</comment>
+    <entry key="DataType1">zip</entry>
+    <entry key="DataRowIterator1">CsvDataRowIterator</entry>
+    <entry key="DataRowParser1">ZipDataRowParser</entry>
+    <entry key="file1">/home/user/Documents/dataSets/us_postal_codes.csv</entry>
+
+    <entry key="DataType2">Population</entry>
+    <entry key="DataRowIterator2">CsvDataRowIterator</entry>
+    <entry key="DataRowParser2">PopulationDataRowParser</entry>
+    <entry key="file2">/home/user/Documents/dataSets/population.csv</entry>
+
+    <entry key="DataType3">Unemployment</entry>
+    <entry key="DataRowIterator3">CsvDataRowIterator</entry>
+    <entry key="DataRowParser3">UnemploymentDataRowParser</entry>
+    <entry key="file3">/home/user/Documents/dataSets/unemployment.csv</entry>
+
+    <entry key="DataType4">AverageIncome</entry>
+    <entry key="DataRowIterator4">CsvDataRowIterator</entry>
+    <entry key="DataRowParser4">AverageIncomeDataRowParser</entry>
+    <entry key="file4">/home/user/Documents/dataSets/averageIncome.csv</entry>
+</properties>
