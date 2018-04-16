@@ -1,5 +1,9 @@
 # Data Processing Documentation
 
+## Processor Lifecycle
+
+The end goal for the processor will be an on demand service to get datasets into the cassandra database. The container will be modified to include environment variables that indicate which datasets from the config should be imported. The default state for this environment variable will be all, intended for use when the app is newly deployed.
+
 ## Class Design
 
 The data processing section was designed to allow new datasets to be added quickly and efficiently. 
