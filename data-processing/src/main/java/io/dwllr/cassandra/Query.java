@@ -1,7 +1,7 @@
 package io.dwllr.cassandra;
 
-//import com.datastax.driver.core.Cluster;
-//import com.datastax.driver.core.Session;
+import com.datastax.driver.core.Cluster;
+import com.datastax.driver.core.Session;
 
 import java.util.*;
 public class Query {
