@@ -1,6 +1,7 @@
 from flask import Flask, jsonify, request
 from cassandra.cluster import Cluster
 from cassandra.query import SimpleStatement
+from cassandra.query import dict_factory
 from flask_cors import CORS
 
 import os
@@ -13,7 +14,14 @@ if os.environ.get("DWLLR_LOCAL", "false") == "true":
 else:
     cluster = Cluster(["cassandra"])
 
-session = cluster.connect("dwllr")  
+session = cluster.connect("dwllr")
+
+#output rows are dicts  
+session.row_factory = dict_factory
+
+#load mappings
+with open("mappings.txt", "r") as infile:
+    mappings = dict(map(lambda x: x.split(), infile))
 
 def error(msg):
     return jsonify({
@@ -30,8 +38,9 @@ def search():
 
     try:
         print(city)
+        s = "SELECT zip," + ",".join(mappings) + " FROM stats WHERE zip=%s"
         rv = session.execute(
-            SimpleStatement("SELECT zip, population FROM stats WHERE zip=%s"),
+            SimpleStatement(s),
             (str(city), )
         )
     except Exception as e:
@@ -40,10 +49,12 @@ def search():
     if len(rv.current_rows) == 0:
         return error("zip code not found")
 
+    row = rv.current_rows[0]
     return jsonify({
         "data": {
             "stats": {
-                "population": rv.current_rows[0].population
+                field_name: row[column_name] 
+                for column_name, field_name in mappings.items()
             }
         }
     })
