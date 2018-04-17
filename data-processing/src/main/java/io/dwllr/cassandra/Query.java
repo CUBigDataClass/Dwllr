@@ -59,6 +59,13 @@ public class Query {
         columns.add("population");
         columns.add("unemployment");
         columns.add("averageIncome");
+        columns.add("whitePercentage");
+        columns.add("blackPercentage");
+        columns.add("nativeAmericanPercentage");
+        columns.add("asianPercentage");
+        columns.add("pacificIslanderPercentage");
+        columns.add("otherPercentage");
+        columns.add("twoOrMoreRacePercentage");
     }
 
 }
