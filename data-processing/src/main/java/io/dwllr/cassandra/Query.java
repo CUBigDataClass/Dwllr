@@ -66,6 +66,7 @@ public class Query {
         columns.add("pacificIslanderPercentage");
         columns.add("otherPercentage");
         columns.add("twoOrMoreRacePercentage");
+        columns.add("medianRent");
     }
 
 }

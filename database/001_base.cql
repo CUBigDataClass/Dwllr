@@ -13,5 +13,6 @@ CREATE TABLE IF NOT EXISTS stats (
    asianPercentage text,
    pacificIslanderPercentage text,
    otherPercentage text,
-   twoOrMoreRacePercentage text
+   twoOrMoreRacePercentage text,
+   medianRent text
 );

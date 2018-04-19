@@ -26,4 +26,9 @@
     <entry key="DataRowIterator5">CsvDataRowIterator</entry>
     <entry key="DataRowParser5">DemographicDataRowParser</entry>
     <entry key="file5">/home/user/Documents/dataSets/demographic.csv</entry>
+
+    <entry key="DataType6">Rent</entry>
+    <entry key="DataRowIterator6">CsvDataRowIterator</entry>
+    <entry key="DataRowParser6">RentDataRowParser</entry>
+    <entry key="file6">/home/user/Documents/dataSets/medianRent.csv</entry>
 </properties>
