@@ -13,7 +13,7 @@ public class DataProcessorDriver {
         int numberOfFiles = 7;
         Connect connection = new Connect();
         String iter = "", parser = "", file = "", type = "";
-        for (int i = 1; i < numberOfFiles; i++) {
+        for (int i = 1; i <= numberOfFiles; i++) {
             try {
                 FileInputStream fileInput = new FileInputStream("./resources/config.xml");
                 Properties properties = new Properties();

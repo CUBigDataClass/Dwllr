@@ -67,6 +67,17 @@ public class Query {
         columns.add("otherPercentage");
         columns.add("twoOrMoreRacePercentage");
         columns.add("medianRent");
+        columns.add("malePercentage");
+        columns.add("femalePercentage");
+        columns.add("lessThanTen");
+        columns.add("tenToNineteen");
+        columns.add("twentyToTwentynine");
+        columns.add("thirtyToThirtynine");
+        columns.add("fourtyToFourtynine");
+        columns.add("fiftyToFiftynine");
+        columns.add("sixtyToSixtynine");
+        columns.add("seventyToSeventynine");
+        columns.add("eightyAndUp");
     }
 
 }

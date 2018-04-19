@@ -14,5 +14,16 @@ CREATE TABLE IF NOT EXISTS stats (
    pacificIslanderPercentage text,
    otherPercentage text,
    twoOrMoreRacePercentage text,
-   medianRent text
+   medianRent text,
+   malePercentage text,
+   femalePercentage text,
+   lessThanTen text,
+   tenToNineteen text,
+   twentyToTwentynine text,
+   thirtyToThirtynine text,
+   fourtyToFourtynine text,
+   fiftyToFiftynine text,
+   sixtyToSixtynine text,
+   seventyToSeventynine text,
+   eightyAndUp text
 );
