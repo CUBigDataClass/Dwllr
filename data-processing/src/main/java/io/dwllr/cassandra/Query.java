@@ -78,6 +78,8 @@ public class Query {
         columns.add("sixtyToSixtynine");
         columns.add("seventyToSeventynine");
         columns.add("eightyAndUp");
+        columns.add("urbanPopulation");
+        columns.add("ruralPopulation");
     }
 
 }

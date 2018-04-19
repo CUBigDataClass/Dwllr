@@ -36,4 +36,9 @@
     <entry key="DataRowIterator7">CsvDataRowIterator</entry>
     <entry key="DataRowParser7">AgeAndGenderDataRowParser</entry>
     <entry key="file7">/home/user/Documents/dataSets/ageAndGender.csv</entry>
+
+    <entry key="DataType8">UrbanVsRural</entry>
+    <entry key="DataRowIterator8">CsvDataRowIterator</entry>
+    <entry key="DataRowParser8">UrbanRuralDataRowParser</entry>
+    <entry key="file8">/home/user/Documents/dataSets/UrbanvsRural.csv</entry>
 </properties>

@@ -25,5 +25,7 @@ CREATE TABLE IF NOT EXISTS stats (
    fiftyToFiftynine text,
    sixtyToSixtynine text,
    seventyToSeventynine text,
-   eightyAndUp text
+   eightyAndUp text,
+   urbanPopulation text,
+   ruralPopulation text
 );
