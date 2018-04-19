@@ -10,7 +10,7 @@ import java.util.Properties;
 
 public class DataProcessorDriver {
     public static void main(String[] args) {
-        int numberOfFiles = 8;
+        int numberOfFiles = 9;
         Connect connection = new Connect();
         String iter = "", parser = "", file = "", type = "";
         for (int i = 1; i <= numberOfFiles; i++) {

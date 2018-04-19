@@ -80,6 +80,13 @@ public class Query {
         columns.add("eightyAndUp");
         columns.add("urbanPopulation");
         columns.add("ruralPopulation");
+        columns.add("noHighSchool");
+        columns.add("highSchoolNoDiploma");
+        columns.add("highSchoolGraduate");
+        columns.add("someCollegeNoDegree");
+        columns.add("associatesDegree");
+        columns.add("bachelorsDegree");
+        columns.add("graduateDegree");
     }
 
 }

@@ -27,5 +27,12 @@ CREATE TABLE IF NOT EXISTS stats (
    seventyToSeventynine text,
    eightyAndUp text,
    urbanPopulation text,
-   ruralPopulation text
+   ruralPopulation text,
+   noHighSchool text,
+   highSchoolNoDiploma text,
+   highSchoolGraduate text,
+   someCollegeNoDegree text,
+   associatesDegree text,
+   bachelorsDegree text,
+   graduateDegree text
 );

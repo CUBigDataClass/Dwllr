@@ -41,4 +41,9 @@
     <entry key="DataRowIterator8">CsvDataRowIterator</entry>
     <entry key="DataRowParser8">UrbanRuralDataRowParser</entry>
     <entry key="file8">/home/user/Documents/dataSets/UrbanvsRural.csv</entry>
+
+    <entry key="DataType9">Education</entry>
+    <entry key="DataRowIterator9">CsvDataRowIterator</entry>
+    <entry key="DataRowParser9">EducationDataRowParser</entry>
+    <entry key="file9">/home/user/Documents/dataSets/education.csv</entry>
 </properties>
