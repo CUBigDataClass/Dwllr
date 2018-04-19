@@ -37,15 +37,15 @@ public class AgeAndGenderDataRowParser implements DataRowParser {
         double eightyToEightyfour = (Double.parseDouble(dataRow.get(54))) / population;
         double eightyFiveAndOver = (Double.parseDouble(dataRow.get(57))) / population;
 
-        Double lessThanTen = fiveToTen + underFive;
-        Double tenToNineteen = tenToFourteen + fiveteenToNineteen;
-        Double twentyToTwentynine = twentyToTwentyfour + twentyFiveToTwentynine;
-        Double thirtyToThirtynine = thirtyToThirtyfour + thirtyfiveToThirtynine;
-        Double fourtyToFourtynine = fourtyToFourtyfour + fourtyfiveToFourtynine;
-        Double fiftyToFiftynine = fiftyToFiftyfour + fiftyfiveToFiftynine;
-        Double sixtyToSixtynine = sixtyToSixtyfour + sixtyFiveToSixtyNine;
-        Double seventyToSeventynine = seventyToSeventyfour + seventyfiveToSeventynine;
-        Double eightyAndUp = eightyToEightyfour + eightyFiveAndOver;
+        double lessThanTen = fiveToTen + underFive;
+        double tenToNineteen = tenToFourteen + fiveteenToNineteen;
+        double twentyToTwentynine = twentyToTwentyfour + twentyFiveToTwentynine;
+        double thirtyToThirtynine = thirtyToThirtyfour + thirtyfiveToThirtynine;
+        double fourtyToFourtynine = fourtyToFourtyfour + fourtyfiveToFourtynine;
+        double fiftyToFiftynine = fiftyToFiftyfour + fiftyfiveToFiftynine;
+        double sixtyToSixtynine = sixtyToSixtyfour + sixtyFiveToSixtyNine;
+        double seventyToSeventynine = seventyToSeventyfour + seventyfiveToSeventynine;
+        double eightyAndUp = eightyToEightyfour + eightyFiveAndOver;
 
 
         DecimalFormat df = new DecimalFormat("#.0");
