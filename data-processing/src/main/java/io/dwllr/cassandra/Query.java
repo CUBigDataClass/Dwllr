@@ -31,6 +31,33 @@ public class Query {
         createQuery();
         return finalQuery;
     }
+    public String getNormalizedQuery(){
+        createNormalizedQuery();
+        return finalQuery;
+    }
+    private void createNormalizedQuery(){
+        if(this.columnName.equals("empty")){
+            createColumnList();
+            finalQuery = "INSERT INTO " + "normalize" + " (";
+            for(String column : columns){
+                finalQuery = finalQuery + column +", ";
+            }
+            finalQuery = finalQuery.substring(0, finalQuery.length()-2) + ") ";
+            finalQuery = finalQuery + "VALUES (";
+            for (int i=0; i<columns.size();i++){
+                if (i == 0){
+                    finalQuery = finalQuery + "'"+zipCode +"', ";
+                }
+                else{
+                    finalQuery = finalQuery + "'0',";
+                }
+            }
+            finalQuery = finalQuery.substring(0, finalQuery.length()-1) + ")";
+        }
+        else{
+            finalQuery = finalQuery + columnName + " = " + "'"+columnValue+"'" + " WHERE zip = '" +zipCode + "'";
+        }
+    }
     private void createQuery() {
         if(this.columnName.equals("empty")){
             createColumnList();
@@ -45,7 +72,7 @@ public class Query {
                     finalQuery = finalQuery + "'"+zipCode +"', ";
                 }
                 else{
-                    finalQuery = finalQuery + "'empty',";
+                    finalQuery = finalQuery + "'0',";
                 }
             }
             finalQuery = finalQuery.substring(0, finalQuery.length()-1) + ")";

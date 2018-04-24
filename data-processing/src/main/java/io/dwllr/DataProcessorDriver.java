@@ -1,5 +1,6 @@
 package io.dwllr;
 import io.dwllr.cassandra.Connect;
+import io.dwllr.cassandra.ConnectNormalize;
 import io.dwllr.cassandra.Query;
 import java.io.*;
 import java.lang.reflect.Constructor;
@@ -12,6 +13,7 @@ public class DataProcessorDriver {
     public static void main(String[] args) {
         int numberOfFiles = 9;
         Connect connection = new Connect();
+        ConnectNormalize connectionNorm = new ConnectNormalize();
         String iter = "", parser = "", file = "", type = "";
         for (int i = 1; i <= numberOfFiles; i++) {
             try {
@@ -39,21 +41,27 @@ public class DataProcessorDriver {
                 Class<?> parserClass = Class.forName("io.dwllr.processor." + parser);
                 Constructor<?> constructorParser = parserClass.getConstructor();
                 Object parserObj = constructorParser.newInstance();
-                Query query;
+                Query query, queryNormalize;
                 while (row.isPresent()) {
                     Method methodCallQuery = parserClass.getDeclaredMethod("getQueryFromData", List.class);
                     Object queryValue = methodCallQuery.invoke(parserObj, row.get());
                     query = (Query) queryValue;
-
+                    Method methodCallQueryNormalize = parserClass.getDeclaredMethod("getQueryFromDataNormalize", List.class);
+                    Object queryValueNormalize = methodCallQueryNormalize.invoke(parserObj, row.get());
+                    queryNormalize = (Query) queryValueNormalize;
                     try {
-                        String finalQuery;
+                        String finalQuery, normalizedQuery;
                         if (type.equals("zip")) {
                             finalQuery = query.getQuery();
+                            normalizedQuery = queryNormalize.getNormalizedQuery();
                         } else {
                             finalQuery = query.getFinalQuery();
+                            normalizedQuery = queryNormalize.getFinalQuery();
                         }
                         System.out.println(finalQuery);
+                        System.out.println(normalizedQuery);
                         connection.query(finalQuery);
+                        connectionNorm.query(normalizedQuery);
                     } catch (Exception e) {
                         System.out.println("QUERY FAILED");
                     }
@@ -70,5 +78,7 @@ public class DataProcessorDriver {
                 System.out.println("Error creating iterator with filename");
             }
         }
+
+
     }
 }

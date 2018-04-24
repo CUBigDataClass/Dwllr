@@ -5,45 +5,45 @@
     <entry key="DataType1">zip</entry>
     <entry key="DataRowIterator1">CsvDataRowIterator</entry>
     <entry key="DataRowParser1">ZipDataRowParser</entry>
-    <entry key="file1">/home/user/Documents/dataSets/us_postal_codes.csv</entry>
+    <entry key="file1">/home/ryan/Documents/dataSets/us_postal_codes.csv</entry>
 
     <entry key="DataType2">Population</entry>
     <entry key="DataRowIterator2">CsvDataRowIterator</entry>
     <entry key="DataRowParser2">PopulationDataRowParser</entry>
-    <entry key="file2">/home/user/Documents/dataSets/population.csv</entry>
+    <entry key="file2">/home/ryan/Documents/dataSets/population.csv</entry>
 
     <entry key="DataType3">Unemployment</entry>
     <entry key="DataRowIterator3">CsvDataRowIterator</entry>
     <entry key="DataRowParser3">UnemploymentDataRowParser</entry>
-    <entry key="file3">/home/user/Documents/dataSets/unemployment.csv</entry>
+    <entry key="file3">/home/ryan/Documents/dataSets/unemployment.csv</entry>
 
     <entry key="DataType4">AverageIncome</entry>
     <entry key="DataRowIterator4">CsvDataRowIterator</entry>
     <entry key="DataRowParser4">AverageIncomeDataRowParser</entry>
-    <entry key="file4">/home/user/Documents/dataSets/averageIncome.csv</entry>
+    <entry key="file4">/home/ryan/Documents/dataSets/averageIncome.csv</entry>
 
     <entry key="DataType5">Demographic</entry>
     <entry key="DataRowIterator5">CsvDataRowIterator</entry>
     <entry key="DataRowParser5">DemographicDataRowParser</entry>
-    <entry key="file5">/home/user/Documents/dataSets/demographic.csv</entry>
+    <entry key="file5">/home/ryan/Documents/dataSets/demographic.csv</entry>
 
     <entry key="DataType6">Rent</entry>
     <entry key="DataRowIterator6">CsvDataRowIterator</entry>
     <entry key="DataRowParser6">RentDataRowParser</entry>
-    <entry key="file6">/home/user/Documents/dataSets/medianRent.csv</entry>
+    <entry key="file6">/home/ryan/Documents/dataSets/medianRent.csv</entry>
 
     <entry key="DataType7">AgeAndGender</entry>
     <entry key="DataRowIterator7">CsvDataRowIterator</entry>
     <entry key="DataRowParser7">AgeAndGenderDataRowParser</entry>
-    <entry key="file7">/home/user/Documents/dataSets/ageAndGender.csv</entry>
+    <entry key="file7">/home/ryan/Documents/dataSets/ageAndGender.csv</entry>
 
     <entry key="DataType8">UrbanVsRural</entry>
     <entry key="DataRowIterator8">CsvDataRowIterator</entry>
     <entry key="DataRowParser8">UrbanRuralDataRowParser</entry>
-    <entry key="file8">/home/user/Documents/dataSets/UrbanvsRural.csv</entry>
+    <entry key="file8">/home/ryan/Documents/dataSets/UrbanvsRural.csv</entry>
 
     <entry key="DataType9">Education</entry>
     <entry key="DataRowIterator9">CsvDataRowIterator</entry>
     <entry key="DataRowParser9">EducationDataRowParser</entry>
-    <entry key="file9">/home/user/Documents/dataSets/education.csv</entry>
+    <entry key="file9">/home/ryan/Documents/dataSets/education.csv</entry>
 </properties>

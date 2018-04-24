@@ -14,4 +14,8 @@ public class ZipDataRowParser implements DataRowParser {
         String column = "zip";
         return new Query(dataRow.get(0), column);
     }
+    public Query getQueryFromDataNormalize(List<String> dataRow) {
+        String column = "zip";
+        return new Query(dataRow.get(0), column);
+    }
 }
