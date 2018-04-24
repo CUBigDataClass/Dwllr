@@ -2,6 +2,7 @@ package io.dwllr.processor;
 
 import io.dwllr.cassandra.Query;
 
+import java.text.DecimalFormat;
 import java.util.List;
 
 public class PopulationDataRowParser implements DataRowParser {
@@ -11,9 +12,33 @@ public class PopulationDataRowParser implements DataRowParser {
 
     @Override
     public Query getQueryFromData(List<String> dataRow) {
-        String queryString = "UPDATE stats SET population = '" + dataRow.get(1) + "'"
+        int population;
+        try{
+            population = Integer.parseInt(dataRow.get(1));
+        }
+        catch(NumberFormatException e){
+            population = 0;
+        }
+        String queryString = "UPDATE stats SET population = '" + population + "'"
                 + " WHERE zip = '" + dataRow.get(0) + "';";
 
+        // Wrap queryString into Query here
+        return new Query(queryString);
+    }
+
+
+    public Query getQueryFromDataNormalize(List<String> dataRow) {
+        DecimalFormat df = new DecimalFormat("#.000");
+        int population;
+        try{
+            population = Integer.parseInt(dataRow.get(1));
+        }
+        catch(NumberFormatException e){
+            population = 0;
+        }
+        double normalizePopulation = ((double)population - 0) / (113916);
+        String queryString = "UPDATE normalize SET population = '" + df.format(normalizePopulation) + "'"
+                + " WHERE zip = '" + dataRow.get(0) + "';";
         // Wrap queryString into Query here
         return new Query(queryString);
     }

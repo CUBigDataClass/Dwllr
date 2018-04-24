@@ -5,9 +5,9 @@ import com.datastax.driver.core.Session;
 /*Used the following sources to help learn about and implement querying cassandra in java
 http://www.baeldung.com/cassandra-with-java
 */
-public class Connect {
+public class ConnectNormalize {
     static final String KEYSPACE = "dwllr";
-    static final String TABLE = "stats";
+    static final String TABLE = "normalize";
     static final String IP = "cassandra";
     Cluster cluster = Cluster.builder().addContactPoint(IP).build();
     Session session = cluster.connect(KEYSPACE);
