@@ -39,7 +39,6 @@ public class PopulationDataRowParser implements DataRowParser {
         double normalizePopulation = ((double)population - 0) / (113916);
         String queryString = "UPDATE normalize SET population = '" + df.format(normalizePopulation) + "'"
                 + " WHERE zip = '" + dataRow.get(0) + "';";
-
         // Wrap queryString into Query here
         return new Query(queryString);
     }

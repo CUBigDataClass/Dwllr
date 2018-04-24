@@ -58,8 +58,6 @@ public class DataProcessorDriver {
                             finalQuery = query.getFinalQuery();
                             normalizedQuery = queryNormalize.getFinalQuery();
                         }
-                        System.out.println(finalQuery);
-                        System.out.println(normalizedQuery);
                         connection.query(finalQuery);
                         connectionNorm.query(normalizedQuery);
                     } catch (Exception e) {
@@ -78,7 +76,8 @@ public class DataProcessorDriver {
                 System.out.println("Error creating iterator with filename");
             }
         }
-
+        connection.close();
+        connectionNorm.close();
 
     }
 }

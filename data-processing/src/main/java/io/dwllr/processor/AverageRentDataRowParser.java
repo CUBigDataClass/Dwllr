@@ -13,18 +13,16 @@ public class AverageRentDataRowParser implements DataRowParser {
         String zipCode = dataRow.get(2);
         int space = zipCode.indexOf(' ');
         zipCode = zipCode.substring(space+1);
-
         String medianRent = dataRow.get(3);
-        int rent;
+        double rent;
         try{
-            rent = Integer.parseInt(medianRent);
+            rent = Double.parseDouble(medianRent);
         }
         catch(NumberFormatException e){
-            rent = 0;
+            rent = 0.0;
         }
         String queryString = "UPDATE stats SET medianRent = '" + rent + "'"
                 + " WHERE zip = '" + zipCode + "';";
-
         // Wrap queryString into Query here
         return new Query(queryString);
     }

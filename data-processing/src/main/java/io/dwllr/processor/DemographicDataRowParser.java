@@ -54,6 +54,7 @@ public class DemographicDataRowParser implements DataRowParser {
 
         double twoOrMoreRacePercentage = (Double.parseDouble(dataRow.get(17))/population) * 100;
         String twoOrMoreRacePopulation = df.format(twoOrMoreRacePercentage);
+
         String queryString = "UPDATE stats SET whitePercentage = '" + whitePopulation + "', "
                 + "blackPercentage = '" + blackPopulation +"', "
                 + "nativeAmericanPercentage = '" + nativeAmericanPopulation +"', "
@@ -111,14 +112,13 @@ public class DemographicDataRowParser implements DataRowParser {
 
         double twoOrMoreRacePercentage = (((Double.parseDouble(dataRow.get(17))/population) * 100) - 0) / (100);
         String twoOrMoreRacePopulation = df.format(twoOrMoreRacePercentage);
-
-        String queryString = "UPDATE normalize SET whitePercentage = '" + df.format(whitePopulation) + "', "
-                + "blackPercentage = '" + df.format(blackPopulation) +"', "
-                + "nativeAmericanPercentage = '" + df.format(nativeAmericanPopulation) +"', "
-                + "asianPercentage = '" + df.format(asianPopulation) +"', "
-                + "pacificIslanderPercentage = '" + df.format(pacificIslanderPopulation) +"', "
-                + "otherPercentage = '" + df.format(otherPopulation) +"', "
-                + "twoOrMoreRacePercentage = '" + df.format(twoOrMoreRacePopulation) +"'"
+        String queryString = "UPDATE normalize SET whitePercentage = '" + whitePopulation + "', "
+                + "blackPercentage = '" + blackPopulation +"', "
+                + "nativeAmericanPercentage = '" + nativeAmericanPopulation +"', "
+                + "asianPercentage = '" + asianPopulation +"', "
+                + "pacificIslanderPercentage = '" + pacificIslanderPopulation +"', "
+                + "otherPercentage = '" + otherPopulation +"', "
+                + "twoOrMoreRacePercentage = '" + twoOrMoreRacePopulation +"'"
                 + " WHERE zip = '" + zipCode + "';";
         // Wrap queryString into Query here
         return new Query(queryString);
