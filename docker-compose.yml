@@ -14,9 +14,12 @@ services:
       - '9042:9042'
     volumes:
       - './database/:/migrations'
+      - '/data/db/:/var/lib/cassandra'
 
   processor:
     build: data-processing/
+    volumes:
+      - '/data/datasets/:/home/user/Documents/dataSets/'
 
   api:
     hostname: apiserver
