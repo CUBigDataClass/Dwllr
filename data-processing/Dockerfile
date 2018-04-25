@@ -14,6 +14,5 @@ ENV MAVEN_CONFIG "$USER_HOME_DIR/.m2"
 # --- Deploy --- #
 COPY . /usr/src/myapp
 WORKDIR /usr/src/myapp
-RUN /bin/bash ./download-datasets.sh
 RUN mvn clean install
 CMD ["java", "-jar", "./target/dwllr-data-processing-1.0-SNAPSHOT-jar-with-dependencies.jar"]
