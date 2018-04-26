@@ -6,6 +6,8 @@ from flask_cors import CORS
 
 import os
 
+from knn import KNN
+
 app = Flask(__name__)
 CORS(app)
 
@@ -16,12 +18,15 @@ else:
 
 session = cluster.connect("dwllr")
 
-#output rows are dicts  
-session.row_factory = dict_factory
-
 #load mappings
 with open("mappings.txt", "r") as infile:
     mappings = dict(map(lambda x: x.split(), infile))
+
+#create knn model
+model = KNN(session)
+
+#output rows are dicts  
+session.row_factory = dict_factory
 
 def error(msg):
     return jsonify({
@@ -55,7 +60,8 @@ def search():
             "stats": {
                 field_name: row[column_name] 
                 for column_name, field_name in mappings.items()
-            }
+            },
+            "similarCities": model.get_knn(city)
         }
     })
 
