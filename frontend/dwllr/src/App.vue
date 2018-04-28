@@ -1,35 +1,48 @@
 <template>
   <div id="app">
 
-    <div id="logo" :class="{'float': !isDefault}">
+    <GMap></GMap>
+
+    <Background></Background>
+
+    <div id="logo" :class="{'float': shrinkLogo}">
       <h1>Dwllr.</h1>
-      <h2>Find your perfect place</h2>
+      <h2>Find your perfect place.</h2>
     </div>
 
-    <DefaultBackground></DefaultBackground>
-
     <Search></Search>
+
+    <transition name="slide-fade">
+      <Result v-if="showResults" :place="place"></Result>
+    </transition>
 
   </div>
 </template>
 
 
 <script>
-import DefaultBackground from './components/DefaultBackground.vue'
+// Custom components
+import GMap from './components/GMap.vue'
+import Background from './components/Background.vue'
 import Search from './components/Search.vue'
+import Result from './components/Result.vue'
 import Bus from './components/bus.js'
+
+// 3rd party components
 import axios from 'axios'
 
 export default {
   name: 'app',
 
   components: {
-    DefaultBackground,
-    Search
+    GMap,
+    Background,
+    Search,
+    Result
   },
 
   mounted () {
-    Bus.$on('search-clicked', this.toMap);
+    Bus.$on('search_submitted', this.transitionToResults);
     axios.get('/api/search', {
       params: {city: 80303}
     })
@@ -42,14 +55,27 @@ export default {
   },
 
   methods: {
-    toMap () {
-      this.isDefault = false;
+    transitionToResults (place) {
+      this.shrinkLogo = true;
+
+      if (!this.showResults) {
+        setTimeout(() => {
+          this.place = place;
+          this.showResults = true;
+        }, 1000);
+      }
+
+      else {
+        this.place = place;
+      }
     }
   },
 
   data () {
     return {
-      isDefault: true
+      showResults: false,
+      shrinkLogo: false,
+      place: {name: '', coords: '', zip: ''}
     }
   }
 
@@ -98,8 +124,8 @@ html, body {
 #app > #logo {
   position: absolute;
   z-index: 3;
-  top: 40px;
-  left: 80px;
+  top: 30px;
+  left: 70px;
   //border-right: 1px solid $border-color;
   border-bottom: 0px solid $border-color;
   padding-right: 24px;
@@ -108,7 +134,7 @@ html, body {
   //box-shadow: $box-shadow;
   background: rgba(255,255,255,0);
   transition: 0.75s ease;
-  transform: translateZ(0) scale(1.6);
+  transform: translateZ(0) scale(1.5);
   will-change: transform;
 }
 
@@ -126,9 +152,21 @@ html, body {
 .float {
   //top: 15px !important;
   //left: 35px !important;
-  transform: scale(1.2) translate(-40px, -22px)!important;
+  transform: scale(1.2) translate(-30px, -12px)!important;
   //border-width: 1px !important;
   //border-radius: 10px !important;
   //box-shadow: 0 1px 2px 0 rgba(60,64,67,0.302), 0 1px 3px 1px rgba(60,64,67,0.149);
+}
+
+.slide-fade-enter-active {
+  transition: all .5s ease;
+}
+.slide-fade-leave-active {
+  transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+}
+.slide-fade-enter, .slide-fade-leave-to
+/* .slide-fade-leave-active below version 2.1.8 */ {
+  transform: translateY(-100px);
+  //opacity: 0;
 }
 </style>

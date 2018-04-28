@@ -32,7 +32,7 @@ export default {
   },
 
   mounted () {
-    Bus.$on('search-clicked', this.fadeOut);
+    Bus.$on('search_submitted', this.fadeOut);
   },
 
   methods: {
@@ -59,9 +59,9 @@ export default {
   z-index: 1;
   width: 100%;
   height: 100%;
-  background: $bg-color;
-  background: url('http://oobrien.com/wordpress/wp-content/uploads/2016/07/googlemaps_july2016.jpg');
-
+  //background: $bg-color;
+  //background: url('http://oobrien.com/wordpress/wp-content/uploads/2016/07/googlemaps_july2016.jpg');
+  pointer-events: none;
 }
 
 // Vertical seperators
@@ -70,6 +70,7 @@ export default {
   width: $search-seperator-width;
   height: 38%;
   background: #aaaaaa;
+  background: $border-color;
   position: absolute;
   top: 0;
   left: 50%;
@@ -81,6 +82,7 @@ export default {
   width: $search-seperator-width;
   height: 48%;
   background: #aaaaaa;
+  background: $border-color;
   position: absolute;
   bottom: 0;
   left: 50%;
@@ -106,18 +108,20 @@ export default {
   width: 100%;
   height: 100%;
   background: #fff;
-  opacity: 0.7;
+  opacity: 0.8;
   transition: 1s ease;
+  pointer-events: none;
 }
 .partial-filter {
   position: absolute;
   width: 100%;
   height: 100%;
-  box-shadow: inset 100px 175px 400px 20px #fffdf9;
+  box-shadow: inset 100px 150px 200px 30px #fffdf9;
   transition: 1.5s ease !important;
+  pointer-events: none;
 }
 .super-inset {
-  box-shadow: inset 400px 400px 400px 40px rgba(255,255,255,1);
+  box-shadow: inset 600px 200px 400px 100px rgba(255,255,255,1);
 }
 .zero-opacity {
   opacity: 0;

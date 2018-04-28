@@ -40,13 +40,13 @@ export default {
   name: 'SearchByAttr',
 
   mounted () {
-    Bus.$on('search-clicked', this.move);
+    Bus.$on('search_submitted', this.move);
   },
 
   methods: {
 
     search () {
-      Bus.$emit('search-clicked');
+      Bus.$emit('search_submitted');
     },
 
     move () {
@@ -120,6 +120,8 @@ export default {
     padding: 12px 24px 24px 28px;
     border: 1px solid $border-color;
     border-radius: $border-radius;
+    box-shadow: 0 1px 2px 0 rgba(60,64,67,0.0), 0 1px 3px 1px rgba(60,64,67,0.0);
+    transition: 1s ease;
   }
   .sub-heading {
     font-size: 26px;

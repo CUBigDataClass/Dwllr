@@ -4,7 +4,7 @@
 
       <transition name="fade">
         <h3 v-if="onDefault">
-          Fond of a particular city?
+          Already fond of a particular city?
         </h3>
       </transition>
 
@@ -15,7 +15,10 @@
       </transition>
 
       <div class="search-form" :style="{ 'box-shadow': shadowData}">
-        <input placeholder="Enter a city name">
+        <!--<input placeholder="Enter a city name">-->
+        <GmapAutocomplete @place_changed="setPlace">
+
+        </GmapAutocomplete>
         <div class="send-button" @click="search()"></div>
       </div>
 
@@ -26,25 +29,74 @@
 <script>
 import Bus from './bus.js'
 
+import * as VueGoogleMaps from 'vue2-google-maps'
+import axios from 'axios'
+
 export default {
   name: 'SearchByCity',
 
+  components: {
+    VueGoogleMaps
+  },
+
   mounted () {
-    Bus.$on('search-clicked', this.move);
+    Bus.$on('search_submitted', this.move);
 
   },
 
   methods: {
 
     search () {
-      Bus.$emit('search-clicked');
+      Bus.$emit('search_submitted');
+    },
+
+    setPlace(place) {
+
+      // Get place object from GMaps
+      this.place = place;
+      console.log(this.place);
+
+      // Get and store latlng for city
+      this.coords = {
+        lat: this.place.geometry.location.lat(),
+        lng: this.place.geometry.location.lng()
+      }
+      console.log(this.coords);
+
+      // Use latlng to hit GMaps api again to get and store zip code
+      const mapsUrl = 'https://maps.googleapis.com/maps/api/geocode/json';
+      const key = 'AIzaSyCYZTGHQL9tayIK6vzOl2evSVynVC41rLo';
+      axios.get(mapsUrl + '?latlng=' + this.coords.lat + ',' + this.coords.lng + '&sensor=false&key=' + key)
+        .then(res => {
+          console.log(res.data);
+          res.data.results.forEach(result => {
+            if (result.types.includes('postal_code')) {
+              result.address_components.forEach(component => {
+                if (component.types.includes('postal_code')) {
+                  console.log(component.long_name);
+                  this.zip = component.long_name;
+                  let place = {
+                    name: this.place.formatted_address,
+                    coords: this.coords,
+                    zip: this.zip
+                  }
+                  Bus.$emit('search_submitted', place);
+                }
+              });
+            }
+          });
+        })
+        .catch(err => {
+          console.log(err);
+        });
     },
 
     move() {
       this.onDefault = false;
       this.translateData = 'translate( -' + (this.windowWidth/2 + this.windowWidth/4 - 245) + 'px, 140px)';
       this.shadowData = '0 1px 2px 0 rgba(60,64,67,0.302), 0 1px 3px 1px rgba(60,64,67,0.149)';
-    }
+    },
+
 
   },
 
@@ -112,6 +164,8 @@ export default {
     border: 1px solid $border-color;
     border-radius: $border-radius;
     background: white;
+    box-shadow: 0 1px 2px 0 rgba(60,64,67,0), 0 1px 3px 1px rgba(60,64,67,0);
+    transition: 1s ease;
   }
   .send-button {
     position: absolute;

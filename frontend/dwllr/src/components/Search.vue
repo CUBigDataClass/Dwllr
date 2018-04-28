@@ -63,10 +63,10 @@ export default {
 }
 #search input:hover {
   border-color: #c3c3c3;
-  border-radius: 10px;
+  border-bottom-left-radius: 10px;
 }
 #search input:focus {
   border-color: #a3a3a3;
-  border-radius: 0px;
+  border-bottom-left-radius: 0px;
 }
 </style>
