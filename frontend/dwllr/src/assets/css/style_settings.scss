@@ -1,0 +1,24 @@
+//
+// Any style that used in more than one place is placed here
+//
+
+// Fonts
+$title-font: 'Roboto Condensed', sans-serif;
+$title-font-weight: 700;
+$body-font: 'Cabin', sans-serif;
+
+// Colors
+$main-font-color: rgba(0,0,0,0.87);
+$secondary-font-color: rgba(0,0,0,0.7);
+$tertiary-font-color: rgba(0,0,0,0.54);
+$bg-color: #fff;
+$border-color: #d3d3d3;
+
+// Widths & heights
+$search-seperator-width: 1px;
+
+// Other
+$border-radius: 8px;
+$secondary-border-radius: 4px;
+$box-shadow: 0 1px 2px 0 rgba(60,64,67,0.302), 0 1px 3px 1px rgba(60,64,67,0.149);
+$secondary-box-shadow: 0 1px 3px 0 rgba(60,64,67,0.302), 0 4px 8px 3px rgba(60,64,67,0.149);
