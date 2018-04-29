@@ -28,6 +28,20 @@
           ></economics>
         </result-card>
       </transition>
+
+      <transition name="slide-up-fade">
+        <result-card v-if="loadThird" name="Racial Demographics">
+          <racial-demographics
+            :whitePercentage="stats.whitePercentage"
+            :blackPercentage="stats.blackPercentage"
+            :nativeAmericanPercentage="stats.nativeAmericanPercentage"
+            :asianPercentage="stats.asianPercentage"
+            :pacificIslanderPercentage="stats.pacificIslanderPercentage"
+            :otherPercentage="stats.otherPercentage"
+            :twoOrMoreRacePercentage="stats.twoOrMoreRacePercentage">
+          </racial-demographics>
+        </result-card>
+      </transition>
     </div>
 
   </div>
@@ -38,6 +52,7 @@ import ResultCard from './result-cards/ResultCard.vue'
 import SimilarCities from './result-cards/SimilarCities.vue'
 import Population from './result-cards/Population.vue'
 import Economics from './result-cards/Economics.vue'
+import RacialDemographics from './result-cards/RacialDemographics.vue'
 
 import axios from 'axios'
 
@@ -51,6 +66,7 @@ export default {
     SimilarCities,
     Population,
     Economics,
+    RacialDemographics,
     axios
   },
 
@@ -148,7 +164,8 @@ export default {
   }
 
   .scroll-box {
-    //overflow-y: auto;
+    overflow-y: auto;
+    height: 500px;
   }
 }
 
