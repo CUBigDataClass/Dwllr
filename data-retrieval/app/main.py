@@ -58,7 +58,7 @@ def search():
     return jsonify({
         "data": {
             "stats": {
-                field_name: row[column_name] 
+                field_name: row[column_name.lower()] 
                 for column_name, field_name in mappings.items()
             },
             "similarCities": model.get_knn(city)

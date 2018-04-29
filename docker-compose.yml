@@ -26,6 +26,8 @@ services:
     build: data-retrieval/
     ports:
       - '3000:3000'
+    environment:
+      - PYTHONUNBUFFERED=0
 
   web:
     build: frontend/
