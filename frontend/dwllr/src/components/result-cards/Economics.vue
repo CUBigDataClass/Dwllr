@@ -2,7 +2,7 @@
   <div id="economics">
     <div class="third">
       <h1><span class="tertiary-font-color" style="padding-right: 4px;">$</span>{{ numberWithCommas(income) }}</h1>
-      <h2 class="sub">avgerage income</h2>
+      <h2 class="sub">average income</h2>
     </div>
     <div class="third">
       <h1><span class="tertiary-font-color" style="padding-right: 4px;">$</span>{{ numberWithCommas(rent) }}</h1>
