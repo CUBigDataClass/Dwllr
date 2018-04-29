@@ -108,7 +108,7 @@ export default {
   width: 100%;
   height: 100%;
   background: #fff;
-  opacity: 0.8;
+  opacity: 0.6;
   transition: 1s ease;
   pointer-events: none;
 }
@@ -116,12 +116,12 @@ export default {
   position: absolute;
   width: 100%;
   height: 100%;
-  box-shadow: inset 100px 150px 200px 30px #fffdf9;
-  transition: 1.5s ease !important;
+  box-shadow: inset -200px 200px 200px 0px #fffdf9, inset -600px 0px 200px 0px rgba(255,253,249, 0.9);
+  transition: 0.4s ease !important;
   pointer-events: none;
 }
 .super-inset {
-  box-shadow: inset 600px 200px 400px 100px rgba(255,255,255,1);
+  box-shadow: inset 0px 100px 400px 100px #fff, inset 600px 200px 400px 100px rgba(255,255,255,1);
 }
 .zero-opacity {
   opacity: 0;

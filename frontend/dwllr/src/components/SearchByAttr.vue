@@ -51,7 +51,7 @@ export default {
 
     move () {
       this.onDefault = false;
-      this.translateData = 'translate(-' + (this.windowWidth/4 - 245) +'px, -165px)';
+      this.translateData = 'translate(-' + (this.windowWidth/4 - 255) +'px, -165px)';
       this.shadowData = '0 1px 2px 0 rgba(60,64,67,0.302), 0 1px 3px 1px rgba(60,64,67,0.149)';
     }
 

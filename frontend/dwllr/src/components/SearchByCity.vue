@@ -41,7 +41,6 @@ export default {
 
   mounted () {
     Bus.$on('search_submitted', this.move);
-
   },
 
   methods: {
@@ -65,7 +64,7 @@ export default {
 
       // Use latlng to hit GMaps api again to get and store zip code
       const mapsUrl = 'https://maps.googleapis.com/maps/api/geocode/json';
-      const key = 'AIzaSyCYZTGHQL9tayIK6vzOl2evSVynVC41rLo';
+      const key = 'AIzaSyDUphyKwQ4lJqCpQjn8-F_FuGyTxjp7vV8';
       axios.get(mapsUrl + '?latlng=' + this.coords.lat + ',' + this.coords.lng + '&sensor=false&key=' + key)
         .then(res => {
           console.log(res.data);
@@ -93,7 +92,7 @@ export default {
 
     move() {
       this.onDefault = false;
-      this.translateData = 'translate( -' + (this.windowWidth/2 + this.windowWidth/4 - 245) + 'px, 140px)';
+      this.translateData = 'translate( -' + (this.windowWidth/2 + this.windowWidth/4 - 255) + 'px, 140px)';
       this.shadowData = '0 1px 2px 0 rgba(60,64,67,0.302), 0 1px 3px 1px rgba(60,64,67,0.149)';
     },
 

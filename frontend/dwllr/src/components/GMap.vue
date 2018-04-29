@@ -1,6 +1,6 @@
 <template>
   <div id="g-map">
-    <gmap-map style="width:100%; height:100%;" :zoom="zoom" :center="{lat:coords.lat, lng:coords.lng+0.5}">
+    <gmap-map style="width:100%; height:100%;" :zoom="zoom" :center="{lat:coords.lat, lng:coords.lng+1}">
       <gmap-marker
         v-for="(m, index) in markers"
         :key="index"
@@ -33,7 +33,7 @@ export default {
       console.log('test');
       console.log(place);
       this.coords = place.coords;
-      this.zoom = 7;
+      this.zoom = 6;
       this.markers = [this.coords];
     }
 

@@ -69,4 +69,41 @@ export default {
   border-color: #a3a3a3;
   border-bottom-left-radius: 0px;
 }
+
+
+.pac-container {
+  //box-shadow: $box-shadow !important;
+  box-shadow: none;
+  width: 450px !important;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+  border: 1px solid $border-color;
+  transform:translate(-29px, 12px);
+  transition: 0.5s ease;
+  font-family: $body-font;
+  //z-index: 1;
+}
+.pac-container:after {
+  background: none !important;
+  height: 0px;
+}
+.pac-item {
+  padding: 12px 16px;
+  font-size: 16px;
+}
+.pac-item-query {
+  font-size: 18px;
+  color: $secondary-font-color;
+}
+.pac-matched {
+  //color: $main-font-color;
+  font-family: $title-font;
+  font-weight: 700;
+}
+.pac-icon {
+  margin-right: 10px;
+}
+.pac-item-selected {
+  background: rgba(0,0,0,0.07);
+}
 </style>
