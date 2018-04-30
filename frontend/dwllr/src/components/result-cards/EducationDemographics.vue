@@ -8,20 +8,20 @@
   import DemographicsChart from './DemographicsChart.vue'
 
   export default {
-    name: 'RacialDemographics',
+    name: 'EducationDemographics',
 
     components: {
       DemographicsChart
     },
 
-    props: ['whitePercentage','blackPercentage','nativeAmericanPercentage','asianPercentage','pacificIslanderPercentage','otherPercentage','twoOrMoreRacePercentage'],
+    props: ['noHighSchool', 'highSchoolNoDiploma', 'highSchoolGraduate', 'someCollegeNoDegree', 'associatesDegree', 'bachelorsDegree', 'graduateDegree'],
 
     methods: {
       formatChartData() {
         return {
-          labels: ['White', 'Black or African American', 'American Indian and Alaska Native', 'Asian', 'Native Hawaiian and Other Pacific Islander', 'Some Other Race', 'Two or More Races'],
+          labels: ['No High School', 'Some High School', 'High School Graduate', 'Some College', 'Associates Degree', 'Bachelors Degree', 'Graduate Degree'],
           datasets: [{
-            label: 'Racial Demographics',
+            label: 'Education Demographics',
             pointBackgroundColor: 'white',
             borderWidth: 1,
             backgroundColor: [
@@ -33,7 +33,7 @@
               'rgba(0, 216, 255, .8)',
               'rgba(155, 89, 182, .8)'
             ],
-            data: [parseFloat(this.whitePercentage), parseFloat(this.blackPercentage), parseFloat(this.nativeAmericanPercentage), parseFloat(this.asianPercentage), parseFloat(this.pacificIslanderPercentage), parseFloat(this.otherPercentage), parseFloat(this.twoOrMoreRacePercentage)]
+            data: [parseFloat(this.noHighSchool),parseFloat(this.highSchoolNoDiploma),parseFloat(this.highSchoolGraduate),parseFloat(this.someCollegeNoDegree),parseFloat(this.associatesDegree),parseFloat(this.bachelorsDegree),parseFloat(this.graduateDegree)]
           }
         ]}
       }
