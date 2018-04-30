@@ -25,8 +25,8 @@
             pointBackgroundColor: 'white',
             borderWidth: 1,
             backgroundColor: [
-              'rgba(65, 184, 131, .8)',
-              'rgba(228, 102, 81, .8)',
+              '#C2B2B4',
+              '#6B4E71'
             ],
             data: [parseFloat(this.malePercentage), parseFloat(this.femalePercentage)]
           }

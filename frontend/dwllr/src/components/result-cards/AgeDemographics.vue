@@ -25,15 +25,15 @@
             pointBackgroundColor: 'white',
             borderWidth: 1,
             backgroundColor: [
-              'rgba(65, 184, 131, .8)',
-              'rgba(228, 102, 81, .8)',
-              'rgba(0, 216, 255, .8)',
-              'rgba(0, 216, 255, .8)',
-              'rgba(0, 216, 255, .8)',
-              'rgba(0, 216, 255, .8)',
-              'rgba(155, 89, 182, .8)',
-              'rgba(155, 89, 182, .8)',
-              'rgba(155, 89, 182, .8)'
+              '#53687E',
+              '#8E9B90',
+              '#C2B2B4',
+              '#AFD2E9',
+              '#FDE8E9',
+              '#6B4E71',
+              '#3A4454',
+              '#0B132B',
+              '#2C302E'
             ],
             data: [parseFloat(this.lessThanTen), parseFloat(this.tenToNineteen),parseFloat(this.twentyToTwentynine), parseFloat(this.thirtyToThirtynine), parseFloat(this.fourtyToFourtynine), parseFloat(this.fiftyToFiftynine),parseFloat(this.sixtyToSixtynine), parseFloat(this.seventyToSeventynine) ,parseFloat(this.eightyAndUp)]
           }
@@ -42,12 +42,3 @@
     }
   }
 </script>
-
-
-
-
-
-
-
-
-
