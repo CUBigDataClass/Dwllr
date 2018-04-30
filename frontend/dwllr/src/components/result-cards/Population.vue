@@ -33,8 +33,8 @@ export default {
 @import "../../assets/css/style_settings.scss";
 
 #population {
-  margin-top: -14px;
-  padding-left: 10px;
+  margin-top: -10px;
+  padding-left: 26px;
   margin-bottom: -20px;
 
   h1 {
@@ -45,7 +45,7 @@ export default {
     font-size: 18px;
     color: $tertiary-font-color;
   //  margin-top: -40px;
-    padding-left: 6px;
+    padding-left: 10px;
   }
 }
 </style>

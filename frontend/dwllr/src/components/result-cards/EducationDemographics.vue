@@ -25,13 +25,13 @@
             pointBackgroundColor: 'white',
             borderWidth: 1,
             backgroundColor: [
-              'rgba(65, 184, 131, .8)',
-              'rgba(228, 102, 81, .8)',
-              'rgba(0, 216, 255, .8)',
-              'rgba(0, 216, 255, .8)',
-              'rgba(0, 216, 255, .8)',
-              'rgba(0, 216, 255, .8)',
-              'rgba(155, 89, 182, .8)'
+              '#53687E',
+              '#8E9B90',
+              '#C2B2B4',
+              '#AFD2E9',
+              '#FDE8E9',
+              '#6B4E71',
+              '#3A4454'
             ],
             data: [parseFloat(this.noHighSchool),parseFloat(this.highSchoolNoDiploma),parseFloat(this.highSchoolGraduate),parseFloat(this.someCollegeNoDegree),parseFloat(this.associatesDegree),parseFloat(this.bachelorsDegree),parseFloat(this.graduateDegree)]
           }

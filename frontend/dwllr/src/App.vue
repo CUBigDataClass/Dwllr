@@ -33,7 +33,6 @@ import GMap from './components/GMap.vue'
 import Background from './components/Background.vue'
 import Search from './components/Search.vue'
 import Result from './components/Result.vue'
-import ImgResult from './components/ImgResult.vue'
 import Bus from './components/bus.js'
 
 // 3rd party components
@@ -46,8 +45,7 @@ export default {
     GMap,
     Background,
     Search,
-    Result,
-    ImgResult
+    Result
   },
 
   mounted () {

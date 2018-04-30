@@ -31,7 +31,7 @@ export default {
 #similar-cities {
   //height: 100px;
   //overflow-x: scroll;
-  margin-top: -18px;
+  margin-top: -16px;
   padding-left: 4px;
 }
 </style>
