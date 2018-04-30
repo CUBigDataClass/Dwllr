@@ -14,13 +14,13 @@
     >
       <!-- Result Cards for city stats-->
       <transition name="slide-up-fade">
-        <result-card v-if="loadFirst" name="Similar Cities">
+        <result-card v-if="loadFirst" name="Similar Cities" :key="triggerTransition">
           <SimilarCities :cities="cities"></SimilarCities>
         </result-card>
       </transition>
 
       <transition name="slide-up-fade">
-        <result-card v-if="loadSecond" name="Economy">
+        <result-card v-if="loadSecond" name="Economy" :key="triggerTransition">
           <economics
             :income="stats.averageincome"
             :unemployment="stats.unemployment"
@@ -30,13 +30,13 @@
       </transition>
 
       <transition name="slide-up-fade">
-        <result-card v-if="loadThird" name="Population">
+        <result-card v-if="loadThird" name="Population" :key="triggerTransition">
           <population :population="stats.population"></population>
         </result-card>
       </transition>
 
       <transition name="slide-up-fade">
-        <result-card v-if="loadFourth" name="Gender">
+        <result-card v-if="loadFourth" name="Gender" :key="triggerTransition">
           <sex-demographics
             :malePercentage="stats.malePercentage"
             :femalePercentage="stats.femalePercentage">
@@ -46,7 +46,7 @@
 
 
       <transition name="slide-up-fade">
-        <result-card v-if="loadFifth" name="Education">
+        <result-card v-if="loadFifth" name="Education" :key="triggerTransition">
           <education-demographics
             :noHighSchool='stats.noHighSchool'
             :highSchoolNoDiploma='stats.highSchoolNoDiploma'
@@ -60,7 +60,7 @@
       </transition>
 
       <transition name="slide-up-fade">
-        <result-card v-if="loadFifth" name="Age">
+        <result-card v-if="loadFifth" name="Age" :key="triggerTransition">
           <age-demographics
             :lessThanTen="stats.lessThanTen"
             :tenToNineteen="stats.tenToNineteen"
@@ -77,7 +77,7 @@
 
 
       <transition name="slide-up-fade">
-        <result-card v-if="loadFifth" name="Race">
+        <result-card v-if="loadFifth" name="Race" :key="triggerTransition">
           <racial-demographics
             :whitePercentage="stats.whitePercentage"
             :blackPercentage="stats.blackPercentage"
@@ -91,7 +91,7 @@
       </transition>
 
       <transition name="slide-up-fade">
-        <result-card v-if="loadFifth" name="Geography">
+        <result-card v-if="loadFifth" name="Geography" :key="triggerTransition">
           <geographic-demographics
             :urbanPopulation="stats.urbanPopulation"
             :ruralPopulation="stats.ruralPopulation">
@@ -163,25 +163,43 @@ export default {
       else {
         this.showShadow = false;
       }
+    },
+
+    loadWaterfall () {
+      setTimeout(() => {
+        this.$data.loadFirst = true;
+        setTimeout(() => {
+          this.$data.loadSecond = true;
+          setTimeout(() => {
+            this.$data.loadThird = true;
+            setTimeout(() => {
+              this.$data.loadFourth = true;
+              setTimeout(() => {
+                this.$data.loadFifth = true;
+              }, 100);
+            }, 100);
+          }, 100);
+        }, 100);
+      }, 20);
     }
   },
 
   watch: {
     place: function (newPlace, oldPlace) {
-      console.log(this);
+      this.loadFirst = false;
+      this.loadSecond = false;
+      this.loadThird = false;
+      this.loadFourth = false;
+      this.loadFifth= false;
       this.place = newPlace;
-      console.log(newPlace);
-      console.log('prop changed', newPlace, oldPlace);
       axios.get('/api/search', {
         params: {city: this.place.zip}
       })
         .then(res => {
-          console.log(res.data.data);
-          console.log(this.similarCities);
           this.$data.stats = res.data.data.stats;
-          console.log(this.$data.stats.population);
           this.$data.cities = res.data.data.similarCities;
-          console.log(this.$data.similarCities);
+          //this.$data.triggerTransition = !this.$data.triggerTransition;
+          this.loadWaterfall();
         })
         .catch(err => {
           console.log(err);
@@ -190,21 +208,7 @@ export default {
 
     show: function (newShow, oldShow) {
       if (newShow && !oldShow) {
-        setTimeout(() => {
-          this.$data.loadFirst = true;
-          setTimeout(() => {
-            this.$data.loadSecond = true;
-            setTimeout(() => {
-              this.$data.loadThird = true;
-              setTimeout(() => {
-                this.$data.loadFourth = true;
-                setTimeout(() => {
-                  this.$data.loadFifth = true;
-                }, 100);
-              }, 100);
-            }, 100);
-          }, 100);
-        }, 20);
+
       }
     }
   },
@@ -219,7 +223,8 @@ export default {
       loadFourth: false,
       loadFifth: false,
       height: 'height:' + (window.innerHeight + 103) + 'px',
-      showShadow: false
+      showShadow: false,
+      triggerTransition: false
     }
   }
 }
@@ -293,14 +298,18 @@ export default {
 }
 
 .slide-up-fade-enter-active {
-  transition: all .5s ease;
+  transition: all .7s ease;
 }
 .slide-up-fade-leave-active {
-  transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+  transition: all 0.2s cubic-bezier(1.0, 0.5, 0.8, 1.0);
 }
-.slide-up-fade-enter, .slide-up-fade-leave-to
+.slide-up-fade-enter
 /* .slide-fade-leave-active below version 2.1.8 */ {
   transform: translateY(1000px);
+  opacity: 0;
+}
+.slide-up-fade-leave-to {
+  transform: translateY(-1000px);
   opacity: 0;
 }
 

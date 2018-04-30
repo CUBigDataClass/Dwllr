@@ -27,25 +27,28 @@ export default {
   },
 
   mounted () {
-    const mapsUrl = 'https://maps.googleapis.com/maps/api/geocode/json';
-    const key = 'AIzaSyDUphyKwQ4lJqCpQjn8-F_FuGyTxjp7vV8';
-    axios.get(mapsUrl + '?address=' + this.zip + '&key=' + key)
-      .then(res => {
-        console.log(res);
-        this.name = res.data.results[0].formatted_address.slice(0, -11);
-        let place = res.data.results[0];
-        this.place = {
-          name: place.formatted_address.slice(0, -6),
-          coords: {
-            lat: place.geometry.location.lat,
-            lng: place.geometry.location.lng
-          },
-          zip: this.zip
-        }
-      })
-      .catch(err => {
-        alert(err);
-      })
+    setTimeout(() => {
+      const mapsUrl = 'https://maps.googleapis.com/maps/api/geocode/json';
+      const key = 'AIzaSyDUphyKwQ4lJqCpQjn8-F_FuGyTxjp7vV8';
+      axios.get(mapsUrl + '?address=' + this.zip + '&key=' + key)
+        .then(res => {
+          console.log(res);
+          this.name = res.data.results[0].formatted_address.slice(0, -11);
+          let place = res.data.results[0];
+          this.place = {
+            name: place.formatted_address.slice(0, -6),
+            coords: {
+              lat: place.geometry.location.lat,
+              lng: place.geometry.location.lng
+            },
+            zip: this.zip
+          }
+        })
+        .catch(err => {
+          alert(err);
+        })
+
+    }, 800);
 
   },
 

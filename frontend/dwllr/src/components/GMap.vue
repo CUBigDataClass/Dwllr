@@ -1,6 +1,6 @@
 <template>
   <div id="g-map">
-    <gmap-map style="width:100%; height:100%;" :zoom="zoom" :center="{lat:coords.lat+2, lng:coords.lng+1.6}">
+    <gmap-map style="width:100%; height:100%;" :zoom="zoom" :center="{lat:this.coords.lat+2, lng:this.coords.lng+1.6}" ref="map">
       <gmap-marker
         v-for="(m, index) in markers"
         :key="index"
@@ -25,6 +25,8 @@ export default {
 
   mounted () {
     Bus.$on('search_submitted', this.updateMarker);
+    this.$refs.map.panTo({lat:this.coords.lat+2, lng:this.coords.lng+1.6});
+
   },
 
   methods: {
@@ -32,9 +34,10 @@ export default {
     updateMarker(place) {
       console.log('test');
       console.log(place);
-      this.coords = place.coords;
-      this.zoom = 6;
-      this.markers = [this.coords];
+      //this.coords = place.coords;
+      this.zoom = 6.2;
+      this.markers = [place.coords];
+      this.$refs.map.panTo({lat:place.coords.lat+2, lng:place.coords.lng+1.6});
     }
 
   },
