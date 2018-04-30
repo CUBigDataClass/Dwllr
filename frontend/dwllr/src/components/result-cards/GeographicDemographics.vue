@@ -25,8 +25,8 @@
             pointBackgroundColor: 'white',
             borderWidth: 1,
             backgroundColor: [
-              'rgba(65, 184, 131, .8)',
-              'rgba(228, 102, 81, .8)'
+              '#53687E',
+              '#3A4454'
             ],
             data: [parseFloat(this.urbanPopulation), parseFloat(this.ruralPopulation)]
           }

@@ -18,7 +18,7 @@ export default {
 @import "../../assets/css/style_settings.scss";
 
 #result-card {
-  width: 95%;
+  width: 90%;
   // margin-left: -2%;
   background: #fff;
   padding: 0px 30px 26px 30px;
@@ -27,14 +27,14 @@ export default {
   box-shadow: $box-shadow;
   margin-top: 0px;
   margin-bottom: 18px;
+  margin-left: 25px;
 
   h1 {
     font-size: 18px;
     font-family: $title-font;
-    color: $main-font-color;
+    color: $secondary-font-color;
     margin-top: 26px;
   }
 }
-
 
 </style>

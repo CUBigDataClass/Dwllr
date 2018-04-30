@@ -4,6 +4,7 @@
   export default {
     name: 'DemographicsChart',
     extends: Doughnut,
+    mixins: [mixins.reactiveProp],
     props: ['chartData'],
 
     data() {
@@ -18,8 +19,18 @@
         }
       }
     },
+
+    watch: {
+      'chartData': {
+        handler(newData, oldData) {
+          console.log(oldData);
+          this.renderChart(this.chartData, this.options);
+        }
+      }
+    },
+
     mounted () {
-      console.log(this.dataCollection)
+      //console.log(this.dataCollection)
       this.renderChart(this.dataCollection, this.options)
     }
   }
