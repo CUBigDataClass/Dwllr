@@ -19,7 +19,7 @@ export default {
 
 #result-card {
   width: 95%;
-  margin-left: -2%;
+  // margin-left: -2%;
   background: #fff;
   padding: 0px 30px 26px 30px;
   border: 1px solid $border-color;

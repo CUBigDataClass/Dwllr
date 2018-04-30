@@ -5,7 +5,7 @@
       <h1 v-if="show">{{ place.name.slice(0,-5) }}&nbsp; <span class="tertiary-font-color" style="">{{ place.zip }}</span></h1>
     </transition>
 
-    <div class="scroll-box">
+    <div class="scroll-box" :style="height">
       <!-- Result Cards for city stats-->
       <transition name="slide-up-fade">
         <result-card v-if="loadFirst" name="Similar Cities">
@@ -28,8 +28,69 @@
           ></economics>
         </result-card>
       </transition>
-    </div>
 
+      <transition name="slide-up-fade">
+        <result-card v-if="loadFourth" name="Geographic Demographics">
+          <geographic-demographics
+            :urbanPopulation="stats.urbanPopulation"
+            :ruralPopulation="stats.ruralPopulation">
+          </geographic-demographics>
+        </result-card>
+      </transition>
+
+      <transition name="slide-up-fade">
+        <result-card v-if="loadFifth" name="Education Demographics">
+          <education-demographics
+            :noHighSchool='stats.noHighSchool'
+            :highSchoolNoDiploma='stats.highSchoolNoDiploma'
+            :highSchoolGraduate='stats.highSchoolGraduate'
+            :someCollegeNoDegree='stats.someCollegeNoDegree'
+            :associatesDegree='stats.associatesDegree'
+            :bachelorsDegree='stats.bachelorsDegree'
+            :graduateDegree='stats.graduateDegree'>
+          </education-demographics>
+        </result-card>
+      </transition>
+
+      <transition name="slide-up-fade">
+        <result-card v-if="loadFifth" name="Age Demographics">
+          <age-demographics
+            :lessThanTen="stats.lessThanTen"
+            :tenToNineteen="stats.tenToNineteen"
+            :twentyToTwentynine="stats.twentyToTwentynine"
+            :thirtyToThirtynine="stats.thirtyToThirtynine"
+            :fourtyToFourtynine="stats.fourtyToFourtynine"
+            :fiftyToFiftynine="stats.fiftyToFiftynine"
+            :sixtyToSixtynine="stats.sixtyToSixtynine"
+            :seventyToSeventynine="stats.seventyToSeventynine"
+            :eightyAndUp="stats.eightyAndUp">
+          </age-demographics>
+        </result-card>
+      </transition>
+
+      <transition name="slide-up-fade">
+        <result-card v-if="loadFifth" name="Sex Demographics">
+          <sex-demographics
+            :malePercentage="stats.malePercentage"
+            :femalePercentage="stats.femalePercentage">
+          </sex-demographics>
+        </result-card>
+      </transition>
+
+      <transition name="slide-up-fade">
+        <result-card v-if="loadFifth" name="Racial Demographics">
+          <racial-demographics
+            :whitePercentage="stats.whitePercentage"
+            :blackPercentage="stats.blackPercentage"
+            :nativeAmericanPercentage="stats.nativeAmericanPercentage"
+            :asianPercentage="stats.asianPercentage"
+            :pacificIslanderPercentage="stats.pacificIslanderPercentage"
+            :otherPercentage="stats.otherPercentage"
+            :twoOrMoreRacePercentage="stats.twoOrMoreRacePercentage">
+          </racial-demographics>
+        </result-card>
+      </transition>
+    </div>
   </div>
 </template>
 
@@ -38,6 +99,11 @@ import ResultCard from './result-cards/ResultCard.vue'
 import SimilarCities from './result-cards/SimilarCities.vue'
 import Population from './result-cards/Population.vue'
 import Economics from './result-cards/Economics.vue'
+import RacialDemographics from './result-cards/RacialDemographics.vue'
+import SexDemographics from './result-cards/SexDemographics.vue'
+import AgeDemographics from './result-cards/AgeDemographics.vue'
+import GeographicDemographics from './result-cards/GeographicDemographics.vue'
+import EducationDemographics from './result-cards/EducationDemographics.vue'
 
 import axios from 'axios'
 
@@ -51,6 +117,11 @@ export default {
     SimilarCities,
     Population,
     Economics,
+    RacialDemographics,
+    SexDemographics,
+    AgeDemographics,
+    GeographicDemographics,
+    EducationDemographics,
     axios
   },
 
@@ -107,6 +178,12 @@ export default {
             this.$data.loadSecond = true;
             setTimeout(() => {
               this.$data.loadThird = true;
+              setTimeout(() => {
+                this.$data.loadFourth = true;
+                setTimeout(() => {
+                  this.$data.loadFifth = true;
+                }, 60);
+              }, 60);
             }, 60);
           }, 60);
         }, 60);
@@ -120,7 +197,10 @@ export default {
       cities: [],
       loadFirst: false,
       loadSecond: false,
-      loadThird: false
+      loadThird: false,
+      loadFourth: false,
+      loadFifth: false,
+      height: 'height:' + (window.innerHeight + 103) + 'px'
     }
   }
 }
@@ -148,7 +228,13 @@ export default {
   }
 
   .scroll-box {
-    //overflow-y: auto;
+    overflow-y: auto;
+    padding-left: 2px;
+    padding-top: 5px;
+    padding-bottom: 240px;
+    margin-top: -10px;
+    position: absolute;
+    z-index: 2
   }
 }
 
