@@ -14,10 +14,10 @@ class AttributeSearch:
         self.cache = {}
         
     # @lru_cache()
-    def search_by_attributes(self, attrs):
+    def search_by_attribute(self, attrs, lim=100):
         k = tuple(attrs.items())
         if k in self.cache:
             return self.cache[k] 
-        self.cache[k] = self.df.apply(lambda row: sum((row[k]-v)**2 for k, v in attrs.items()), axis=1).sort_values()
+        self.cache[k] = self.df.apply(lambda row: sum((row[k]-v)**2 for k, v in attrs.items()), axis=1).sort_values().head(lim)
         return self.cache[k]
         

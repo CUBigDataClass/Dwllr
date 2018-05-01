@@ -47,8 +47,8 @@ def search():
         return error("empty attributes")
     return search_by_attribute(attrs)
 
-def search_by_attribute(attrs, n=10):
-    res = ats.search_by_attributes(attrs)
+def search_by_attribute(attrs, n=100):
+    res = ats.search_by_attribute(attrs)
     return jsonify({
         "cities": [zipcode for zipcode in res.index[:n]]
     })
