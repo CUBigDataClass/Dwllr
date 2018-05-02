@@ -18,12 +18,22 @@
 
         <div class="input-group">
           <label>Population <span class="secondary-label"># people</span></label>
-          <input placeholder="Enter a number [0, 500000]" @focus="isFocused = true" @blur="isFocused = false">
+          <input placeholder="Enter a number" @focus="isFocused = true" @blur="isFocused = false" v-model="population">
         </div>
 
         <div class="input-group">
           <label>Average Rent <span class="secondary-label">$ per month</span></label>
-          <input placeholder="Enter a number [0, 4000]" @focus="isFocused = true" @blur="isFocused = false">
+          <input placeholder="Enter a number" @focus="isFocused = true" @blur="isFocused = false" v-model="rent">
+        </div>
+
+        <div class="input-group">
+          <label>Average Income <span class="secondary-label">$ per year</span></label>
+          <input placeholder="Enter a number" @focus="isFocused = true" @blur="isFocused = false" v-model="income">
+        </div>
+
+        <div class="input-group">
+          <label>Unemployment <span class="secondary-label">% of people</span></label>
+          <input placeholder="Enter a number" @focus="isFocused = true" @blur="isFocused = false" v-model="unemployment">
         </div>
 
         <button @click="search">Let's go<div class="send-arrow"></div></button>
@@ -36,8 +46,14 @@
 <script>
 import Bus from './bus.js';
 
+import axios from 'axios'
+
 export default {
   name: 'SearchByAttr',
+
+  // components: {
+  //   axios
+  // },
 
   mounted () {
     Bus.$on('search_submitted', this.move);
@@ -47,12 +63,46 @@ export default {
 
     search () {
       Bus.$emit('search_submitted');
+      this.getCities()
+
     },
 
     move () {
       this.onDefault = false;
       this.translateData = 'translate(-' + (this.windowWidth/4 - 255) +'px, -165px)';
       this.shadowData = '0 1px 2px 0 rgba(60,64,67,0.302), 0 1px 3px 1px rgba(60,64,67,0.149)';
+    },
+
+    getAttributes() {
+      var obj = {};
+
+      obj = this.addSantizedData(obj, "population", this.population);
+      obj = this.addSantizedData(obj, "averageincome", this.income);
+      obj = this.addSantizedData(obj, "medianrent", this.rent);
+      obj = this.addSantizedData(obj, "unemployment", this.unemployment);
+
+      return obj;
+    },
+
+    addSantizedData(obj, key, value) {
+      var valueAsFloat = parseFloat(value)
+      if (!isNaN(valueAsFloat)) {
+        obj[key] = valueAsFloat;
+      }
+
+      return obj;
+    },
+
+    getCities() {
+      axios.get('/api/search', {
+        params: this.getAttributes()
+      })
+        .then(res => {
+          console.log(res.data);
+        })
+        .catch(err => {
+          console.log(err);
+        })
     }
 
   },
