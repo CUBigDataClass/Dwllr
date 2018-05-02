@@ -12,7 +12,7 @@ class AttributeSearch:
         self.df = pd.DataFrame(data, columns=self.cols).set_index("zip")
         self.cache = {}
         
-    def search_by_attribute(self, attrs, lim=100):
+    def search_by_attribute(self, attrs, lim=5):
         k = tuple(attrs.items())
         if k in self.cache:
             return self.cache[k] 
