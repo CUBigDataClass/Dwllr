@@ -123,6 +123,9 @@ export default {
 .super-inset {
   box-shadow: inset 0px 100px 400px 100px #fff, inset 600px 200px 400px 100px rgba(255,255,255,1);
 }
+.no-filter {
+  box-shadow: none;
+}
 .zero-opacity {
   opacity: 0;
 }

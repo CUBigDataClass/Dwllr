@@ -14,7 +14,12 @@
         </h4>
       </transition>
 
-      <div class="search-form" :class="{darken: isFocused}" :style="{'box-shadow': shadowData}">
+      <div
+        class="search-form"
+        :class="{darken: isFocused}"
+        :style="{'box-shadow': shadowData}"
+        @keyup.enter="search()"
+        >
 
         <div class="input-group">
           <label>Population <span class="secondary-label"># people</span></label>
@@ -36,7 +41,7 @@
           <input placeholder="Enter a number" @focus="isFocused = true" @blur="isFocused = false" v-model="unemployment">
         </div>
 
-        <button @click="search">Let's go<div class="send-arrow"></div></button>
+        <button @click="search">Search for cities<div class="send-arrow"></div></button>
 
       </div>
     </div>
@@ -62,14 +67,13 @@ export default {
   methods: {
 
     search () {
-      Bus.$emit('search_submitted');
+      //Bus.$emit('search_submitted');
       this.getCities()
-
     },
 
     move () {
       this.onDefault = false;
-      this.translateData = 'translate(-' + (this.windowWidth/4 - 255) +'px, -165px)';
+      this.translateData = 'translate(-' + (this.windowWidth/4 - 255) +'px, -185px)';
       this.shadowData = '0 1px 2px 0 rgba(60,64,67,0.302), 0 1px 3px 1px rgba(60,64,67,0.149)';
     },
 
@@ -98,7 +102,11 @@ export default {
         params: this.getAttributes()
       })
         .then(res => {
-          console.log(res.data);
+          //console.log(res.data);
+          let zipResults = res.data.cities.slice(0, 4);
+          Bus.$emit('start_loading');
+          Bus.$emit('search_attr_submitted', zipResults);
+          console.log(zipResults);
         })
         .catch(err => {
           console.log(err);
@@ -113,7 +121,11 @@ export default {
       onDefault: true,
       windowWidth: window.innerWidth,
       translateData: 'translate(0px, 0px)',
-      shadowData: '0px'
+      shadowData: '0px',
+      population: '',
+      income: '',
+      rent: '',
+      unemployment: ''
     }
   }
 }
@@ -179,7 +191,8 @@ export default {
     line-height: 60px;
   }
   button {
-    margin-top:4px;
+    margin-top: 12px;
+    margin-bottom: -6px;
     font-size: 18px;
     font-family: $body-font;
     color: $tertiary-font-color;
@@ -220,7 +233,7 @@ export default {
 }
 
 .input-group {
-  margin: 16px 0px 14px 0px;
+  margin: 16px 0px -4px 0px;
 }
 
 .darken {

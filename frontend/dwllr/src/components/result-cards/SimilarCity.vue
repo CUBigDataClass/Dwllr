@@ -1,5 +1,5 @@
 <template>
-  <div id="similar-city" @click="emitSearched()">
+  <div id="similar-city" @click="emitSearched()" :class="{'active': active}">
     <h1>{{ name }}</h1>
     <h2>{{ zip }}</h2>
   </div>
@@ -13,7 +13,7 @@ import axios from 'axios'
 export default {
   name: 'SimilarCity',
 
-  props: ['zip'],
+  props: ['zip', 'active'],
 
   components: {
     Bus,
@@ -81,7 +81,7 @@ export default {
     color: $secondary-font-color;
     font-size: 18px;
     line-height: 18px;
-    margin-top: 14px;
+    margin-top: 11px;
   }
   h2 {
     font-family: $body-font;

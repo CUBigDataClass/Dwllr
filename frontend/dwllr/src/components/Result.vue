@@ -186,6 +186,7 @@ export default {
 
   watch: {
     place: function (newPlace, oldPlace) {
+      console.log(oldPlace);
       this.loadFirst = false;
       this.loadSecond = false;
       this.loadThird = false;
@@ -206,11 +207,6 @@ export default {
         });
     },
 
-    show: function (newShow, oldShow) {
-      if (newShow && !oldShow) {
-
-      }
-    }
   },
 
   data () {
@@ -247,7 +243,7 @@ export default {
       font-weight: $title-font-weight;
       color: $secondary-font-color;
       font-size: 48px;
-      margin-top: 16px;
+      margin-top: 20px;
       margin-bottom: 22px;
   }
 

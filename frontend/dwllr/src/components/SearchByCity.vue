@@ -79,6 +79,7 @@ export default {
                     coords: this.coords,
                     zip: this.zip
                   }
+                  Bus.$emit('close_search_attr_results');
                   Bus.$emit('search_submitted', place);
                 }
               });
@@ -92,7 +93,8 @@ export default {
 
     move() {
       this.onDefault = false;
-      this.translateData = 'translate( -' + (this.windowWidth/2 + this.windowWidth/4 - 255) + 'px, 140px)';
+      // 255
+      this.translateData = 'translate( -' + (this.windowWidth/2 + this.windowWidth/4 - 255) + 'px, 278px)';
       this.shadowData = '0 1px 2px 0 rgba(60,64,67,0.302), 0 1px 3px 1px rgba(60,64,67,0.149)';
     },
 
@@ -136,7 +138,7 @@ export default {
 .move-to-bottom-left {
   //top: 500px !important;
   transition: 0.75s ease !important;
-  transform: translate(0%, 140px) !important;
+  transform: translate(0%, 280px) !important;
 }
 
 #search-by-city > .container {

@@ -1,6 +1,7 @@
 <template>
   <div id="app">
 
+
     <GMap></GMap>
 
     <Background></Background>
@@ -23,6 +24,11 @@
     <!--<img-result :show="showResults" :place="place"></img-result>-->
     <!--</transition>-->
 
+    <transition name="slide-up">
+      <search-by-attr-results v-if="zips.length > 0" :zips="zips"></search-by-attr-results>
+    </transition>
+    <div id="loader" v-if="loading"></div>
+
   </div>
 </template>
 
@@ -33,6 +39,7 @@ import GMap from './components/GMap.vue'
 import Background from './components/Background.vue'
 import Search from './components/Search.vue'
 import Result from './components/Result.vue'
+import SearchByAttrResults from './components/SearchByAttrResults.vue'
 import Bus from './components/bus.js'
 
 // 3rd party components
@@ -45,11 +52,53 @@ export default {
     GMap,
     Background,
     Search,
-    Result
+    Result,
+    SearchByAttrResults
   },
 
   mounted () {
     Bus.$on('search_submitted', this.transitionToResults);
+
+    Bus.$on('start_loading', () => {
+      this.loading = true;
+    });
+
+    Bus.$on('search_attr_submitted', zips => {
+      this.setLoading(true);
+      this.showSearchResults = true;
+      this.zips = zips;
+      let firstZip = zips[0];
+
+      const mapsUrl = 'https://maps.googleapis.com/maps/api/geocode/json';
+      const key = 'AIzaSyDUphyKwQ4lJqCpQjn8-F_FuGyTxjp7vV8';
+      axios.get(mapsUrl + '?address=' + firstZip + '&key=' + key)
+        .then(res => {
+          console.log(res);
+          let place = res.data.results[0];
+          let placeObj = {
+            name: place.formatted_address.slice(0, -5),
+            coords: {
+              lat: place.geometry.location.lat,
+              lng: place.geometry.location.lng
+            },
+            zip: firstZip
+          };
+          this.setLoading(false);
+          Bus.$emit('search_submitted', placeObj);
+        })
+        .catch(err => {
+          alert(err);
+        })
+    });
+
+    Bus.$on('close_search_attr_results', () => {
+      if (this.zips.length != 0) {
+        this.zips = [];
+        this.showResults = false;
+        Bus.$emit('close_search_results');
+      }
+    })
+
     axios.get('/api/search', {
       params: {city: 80303}
     })
@@ -64,7 +113,7 @@ export default {
   methods: {
     transitionToResults (place) {
       this.shrinkLogo = true;
-
+      console.log(place);
       if (!this.showResults) {
         setTimeout(() => {
           this.place = place;
@@ -75,14 +124,21 @@ export default {
       else {
         this.place = place;
       }
+    },
+
+    setLoading(loading) {
+      this.loading = loading;
     }
   },
 
   data () {
     return {
       showResults: false,
+      showSearchResults: true,
       shrinkLogo: false,
-      place: {name: '', coords: '', zip: ''}
+      place: {name: '', coords: '', zip: ''},
+      zips: 0,
+      loading: false
     }
   }
 
@@ -177,5 +233,33 @@ svg {
   //box-shadow: 0 1px 2px 0 rgba(60,64,67,0.302), 0 1px 3px 1px rgba(60,64,67,0.149);
 }
 
+.slide-up {
 
+}
+.slide-up-enter-active {
+  transition: all .7s ease;
+}
+.slide-up-leave-active {
+  transition: all 0.7s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+}
+.slide-up-enter
+/* .slide-fade-leave-active below version 2.1.8 */ {
+  transform: translateY(1000px);
+  opacity: 0;
+}
+.slide-up-leave-to {
+  transform: translateY(1000px);
+  opacity: 0;
+}
+
+#loader {
+  position: absolute;
+  top: -20px;
+  right: 10px;
+  z-index: 100;
+  height: 100px;
+  width: 100px;
+  background-image: url('./assets/img/loading.gif');
+  background-size: cover;
+}
 </style>
