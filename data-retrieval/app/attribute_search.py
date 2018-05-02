@@ -1,5 +1,4 @@
 import pandas as pd
-from functools import lru_cache
 
 class AttributeSearch:
     def __init__(self, session):
@@ -13,7 +12,6 @@ class AttributeSearch:
         self.df = pd.DataFrame(data, columns=self.cols).set_index("zip")
         self.cache = {}
         
-    # @lru_cache()
     def search_by_attribute(self, attrs, lim=100):
         k = tuple(attrs.items())
         if k in self.cache:

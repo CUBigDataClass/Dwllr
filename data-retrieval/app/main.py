@@ -47,10 +47,10 @@ def search():
         return error("empty attributes")
     return search_by_attribute(attrs)
 
-def search_by_attribute(attrs, n=100):
+def search_by_attribute(attrs):
     res = ats.search_by_attribute(attrs)
     return jsonify({
-        "cities": [zipcode for zipcode in res.index[:n]]
+        "cities": list(res.index)
     })
 
 def search_by_city(city):
