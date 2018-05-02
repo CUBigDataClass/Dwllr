@@ -64,7 +64,7 @@ export default {
 
       // Use latlng to hit GMaps api again to get and store zip code
       const mapsUrl = 'https://maps.googleapis.com/maps/api/geocode/json';
-      const key = 'AIzaSyDUphyKwQ4lJqCpQjn8-F_FuGyTxjp7vV8';
+      const key = 'AIzaSyAqTdk_z9F2wQ2rKpWBd56OUHclYEnTCwM';
       axios.get(mapsUrl + '?latlng=' + this.coords.lat + ',' + this.coords.lng + '&sensor=false&key=' + key)
         .then(res => {
           console.log(res.data);

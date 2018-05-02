@@ -29,7 +29,7 @@ export default {
   mounted () {
     setTimeout(() => {
       const mapsUrl = 'https://maps.googleapis.com/maps/api/geocode/json';
-      const key = 'AIzaSyDUphyKwQ4lJqCpQjn8-F_FuGyTxjp7vV8';
+      const key = 'AIzaSyAqTdk_z9F2wQ2rKpWBd56OUHclYEnTCwM';
       axios.get(mapsUrl + '?address=' + this.zip + '&key=' + key)
         .then(res => {
           console.log(res);
