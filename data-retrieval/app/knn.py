@@ -4,7 +4,7 @@ from cassandra.cluster import Cluster
 class KNN:
     def __init__(self, session):
         rv = session.execute("SELECT * from normalize")
-        self.cols = rv.current_rows[0]._fields
+        cols = rv.current_rows[0]._fields
         self.zip_to_index = {}
         self.index_to_zip = {}
         self.data = []
@@ -21,8 +21,3 @@ class KNN:
     def get_knn(self, zip_code, k=5):
         indicies, = self.nbrs.kneighbors([self.data[self.zip_to_index[zip_code]]], n_neighbors=k+1, return_distance=False)
         return [self.index_to_zip[i] for i in indicies[1:]]
-
-    # def get_knn_attribute(self, attrs, k=5):
-    #     point = [attrs.get(col, 0) for col ]
-    #     for col in cols:
-    #         point.append(attrs.get(col, 0)
