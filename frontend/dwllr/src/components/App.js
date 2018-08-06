@@ -3,23 +3,22 @@ import { Route } from 'react-router-dom';
 import CustomMap from './CustomMap';
 import './App.css';
 
-class Test extends Component {
-  render() {
-    return (
-      <div>
-        on search page
-      </div>
-    );
-  }
-}
+const Home = () => (
+  <div>react router on home page</div>
+)
+
+const Search = () => (
+  <div>react router on search page</div>
+)
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <CustomMap />
         hello
-        <Route exact path="/search" component={Test} />
+        <Route exact path="/" component={Home} />
+        <Route exact path="/search" component={Search} />
+        <CustomMap />
       </div>
     );
   }
