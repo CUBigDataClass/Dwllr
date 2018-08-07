@@ -6,15 +6,15 @@ import MapOverlay from './MapOverlay';
 
 export default class PersistentUI extends React.Component {
   render() {
-    const onHomePage = this.props.location.pathname !== 'search' ? true : false;
+    console.log(this.props);
+    const onSearchPage = this.props.location.pathname === '/search' ? true : false;
     
     return (
       <React.Fragment>
-        <div>PersistentUI on {this.props.location.pathname}</div>
-        <Logo />
-        <SearchByAttribute onHomePage={onHomePage} />
-        <SearchByCity onHomePage={onHomePage} />
-        <MapOverlay />
+        <Logo onSearchPage={onSearchPage} />
+        <SearchByAttribute onSearchPage={onSearchPage} />
+        <SearchByCity onSearchPage={onSearchPage} />
+        <MapOverlay onSearchPage={onSearchPage} />
       </React.Fragment>
     )
   }

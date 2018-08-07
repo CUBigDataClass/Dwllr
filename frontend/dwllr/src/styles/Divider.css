@@ -1,0 +1,30 @@
+#Divider {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 11;
+}
+
+#Divider .vertical-line {
+  left: calc(50% - 1px);
+  position: absolute;
+  background: #D3D3D3;
+  width: 1px;
+}
+
+#Divider .vertical-line.top-half {
+  top: 0;
+  height: calc(40% - 100px);
+}
+
+#Divider .vertical-line.bottom-half {
+  bottom: 0;
+  height: calc(60% - 100px);
+}
+
+#Divider .text {
+  top: calc(40%);
+  font-size: 
+}

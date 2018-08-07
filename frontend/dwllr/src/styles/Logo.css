@@ -1,0 +1,38 @@
+#Logo {
+  position: absolute;
+  top: 0px;
+  left: 45px;
+  z-index: 11;
+  transition: 0.75s ease;
+  color: inherit;
+  text-decoration: inherit;
+}
+
+#Logo h1 {
+  font-size: 3em;
+  transition: 0.3s ease;
+}
+
+#Logo h2 {
+  font-size: 3em;
+  transition: 0.3s ease;
+}
+
+#Logo.onSearchPage:hover h1 {
+  color: rgba(0,0,0,0.7);
+}
+
+#Logo.onSearchPage:hover h2 {
+  transform: translateX(8px);
+}
+
+#Logo h2 {
+  font-size: 1.7em;
+  font-weight: 400;
+  color: rgba(0, 0, 0, 0.54);
+  margin-top: -1.2em;
+}
+
+#Logo.onSearchPage {
+  transform: scale(0.8) translate(-50px, -26px) !important  
+}

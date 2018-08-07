@@ -14,8 +14,8 @@ const ComposedMap = compose(
   withGoogleMap
 )(props => 
   <GoogleMap
-    defaultZoom={6}
-    defaultCenter={{lat: 41.0902, lng: -99.7129}}
+    defaultZoom={5}
+    defaultCenter={{lat: 40.0902, lng: -98.7129}}
     ref={props.onMapMounted}
   >
     {props.isMarkerShown && <Marker position={{ lat: -34.397, lng: 150.644 }} onClick={props.onMarkerClick} />}
