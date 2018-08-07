@@ -1,24 +1,16 @@
 import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
-import CustomMap from './CustomMap';
-import './App.css';
-
-const Home = () => (
-  <div>react router on home page</div>
-)
-
-const Search = () => (
-  <div>react router on search page</div>
-)
+import CustomMapContainer from '../containers/CustomMapContainer';
+import PersistentUI from './PersistentUI';
+import '../styles/App.css';
 
 class App extends Component {
   render() {
     return (
       <div className="App">
         hello
-        <Route exact path="/" component={Home} />
-        <Route exact path="/search" component={Search} />
-        <CustomMap />
+        <Route exact path="/(|search)" component={PersistentUI} />
+        <CustomMapContainer />
       </div>
     );
   }

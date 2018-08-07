@@ -1,0 +1,12 @@
+/* disable Map/Sattelite toggle */
+.gmnoprint {
+  display: none;
+}
+
+button[aria-label="Toggle fullscreen view"] {
+  display: none;
+}
+
+a[title="Click to see this area on Google Maps"] {
+  display: none !important;
+}

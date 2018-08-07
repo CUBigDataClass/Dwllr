@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
 import { compose, withProps } from 'recompose';
 import { withScriptjs, withGoogleMap, GoogleMap, Marker } from "react-google-maps";
+import '../styles/CustomMap.css';
 
 const ComposedMap = compose(
   withProps({
@@ -27,7 +28,6 @@ export default class CustomMap extends PureComponent {
   }
   
   componentDidMount() {
-    this.pan();
   }
   
   pan = () => {
@@ -40,6 +40,8 @@ export default class CustomMap extends PureComponent {
   setRef = ref => {
     console.log('ref: ', ref);
     this.mapRef = ref;
+    this.pan();
+    //this.mapRef.setOptions({draggable: false});
   }
   
   render() {
