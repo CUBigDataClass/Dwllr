@@ -5650,7 +5650,7 @@ promise@^7.1.1:
   dependencies:
     asap "~2.0.3"
 
-prop-types@^15.5.10, prop-types@^15.5.8, prop-types@^15.6.0, prop-types@^15.6.1:
+prop-types@^15.5.0, prop-types@^15.5.10, prop-types@^15.5.8, prop-types@^15.6.0, prop-types@^15.6.1:
   version "15.6.2"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.6.2.tgz#05d5ca77b4453e985d60fc7ff8c859094a497102"
   dependencies:
@@ -5817,6 +5817,12 @@ react-dom@^16.4.2:
 react-error-overlay@^4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/react-error-overlay/-/react-error-overlay-4.0.0.tgz#d198408a85b4070937a98667f500c832f86bd5d4"
+
+react-google-autocomplete@^1.0.16:
+  version "1.0.16"
+  resolved "https://registry.yarnpkg.com/react-google-autocomplete/-/react-google-autocomplete-1.0.16.tgz#30d35b7fb8556160bdceec93ec70c2546eccbd24"
+  dependencies:
+    prop-types "^15.5.0"
 
 react-google-maps@^9.4.5:
   version "9.4.5"
@@ -6041,6 +6047,26 @@ reduce-function-call@^1.0.1:
   dependencies:
     balanced-match "^0.4.2"
 
+redux-api-call-adapter-dedupe@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/redux-api-call-adapter-dedupe/-/redux-api-call-adapter-dedupe-1.0.0.tgz#e9f0cf304969d7ba22ab56b32872a4c9e04b5057"
+
+redux-api-call-adapter-fetch@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/redux-api-call-adapter-fetch/-/redux-api-call-adapter-fetch-1.0.0.tgz#94dd01a1a831cc638dcb1371195b65058a4d2946"
+
+redux-api-call-adapter-json@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/redux-api-call-adapter-json/-/redux-api-call-adapter-json-1.0.0.tgz#f91ade4f46b7cc711954da7601277eb2fd70b52f"
+
+redux-api-call@^1.0.9:
+  version "1.0.9"
+  resolved "https://registry.yarnpkg.com/redux-api-call/-/redux-api-call-1.0.9.tgz#f14d5013a250b6708e48870ad6a27a96fa759d09"
+  dependencies:
+    redux-api-call-adapter-dedupe "^1.0.0"
+    redux-api-call-adapter-fetch "^1.0.0"
+    redux-api-call-adapter-json "^1.0.0"
+
 redux-devtools-extension@^2.13.5:
   version "2.13.5"
   resolved "https://registry.yarnpkg.com/redux-devtools-extension/-/redux-devtools-extension-2.13.5.tgz#3ff34f7227acfeef3964194f5f7fc2765e5c5a39"
@@ -6230,6 +6256,10 @@ require-uncached@^1.0.3:
 requires-port@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/requires-port/-/requires-port-1.0.0.tgz#925d2601d39ac485e091cf0da5c6e694dc3dcaff"
+
+reselect@^3.0.1:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/reselect/-/reselect-3.0.1.tgz#efdaa98ea7451324d092b2b2163a6a1d7a9a2147"
 
 resolve-cwd@^2.0.0:
   version "2.0.0"

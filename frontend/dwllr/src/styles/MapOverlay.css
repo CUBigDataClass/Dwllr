@@ -10,6 +10,6 @@
   transition: 1s ease;
 }
 
-#MapOverlay.onSearchPage {
+#MapOverlay.onResultsPage {
   background: transparent;
 }

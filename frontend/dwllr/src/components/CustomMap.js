@@ -5,7 +5,7 @@ import '../styles/CustomMap.css';
 
 const ComposedMap = compose(
   withProps({
-    googleMapURL: "https://maps.googleapis.com/maps/api/js?key=AIzaSyDUphyKwQ4lJqCpQjn8-F_FuGyTxjp7vV8&v=3.exp&libraries=geometry,drawing,places",
+    googleMapURL: "null",
     loadingElement: <div style={{ height: `400px`, width: `400px`, background: 'green', color: '#fff' }}>LOADING!</div>,
     containerElement: <div style={{ height: `100%` }} />,
     mapElement: <div style={{ height: `100%` }} />,
@@ -33,7 +33,7 @@ export default class CustomMap extends PureComponent {
   pan = () => {
     setTimeout(() => {
       console.log('pan');
-      this.mapRef.panTo({lat: 44.0902, lng: -102.7129});
+      //this.mapRef.panTo({lat: 44.0902, lng: -102.7129});
     }, 3000);
   }
   

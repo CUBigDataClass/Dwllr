@@ -1,0 +1,126 @@
+#SearchByAttribute {
+  z-index: 13;
+  position: absolute;
+  top: calc(20%);
+  left: calc(25% - 225px);
+  width: 450px;
+  transition: 0.75s ease;
+}
+
+#SearchByAttribute.onResultsPage h4 {
+  color: transparent;
+}
+#SearchByAttribute.onResultsPage h3 {
+  color: transparent;
+}
+#SearchByAttribute.onResultsPage .form-container {
+  box-shadow: 0 1px 2px 0 rgba(60,64,67,0.302), 0 1px 3px 1px rgba(60,64,67,0.149);
+}
+
+#SearchByAttribute h4 {
+  font-family: "Cabin", sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  color: rgba(0, 0, 0, 0.54);
+  margin-bottom: 8px;
+  transition: 0.3s ease;
+}
+
+#SearchByAttribute h3 {
+  font-family: "Roboto Condensed", sans-serif;
+  color: rgba(0, 0, 0, 0.7);
+  font-size: 2em;
+  margin: 0px 0px 24px 1px;
+  transition: 0.3s ease;
+}
+
+#SearchByAttribute .form-container {
+  position: absolute;
+  background: #fff;
+  top: 115px;
+  left: 0;
+  width: 450px;
+  margin-top: -8px;
+  padding: 12px 24px 24px 28px;
+  border: 1px solid #d3d3d3;
+  border-radius: 8px;
+  box-shadow: 0 1px 2px 0 rgba(60,64,67,0.0), 0 1px 3px 1px rgba(60,64,67,0.0);
+  transition: 1s ease;
+}
+
+#SearchByAttribute label {
+  font-size: 1.06em;
+  font-weight: 700;
+  font-family: 'Roboto Condensed', sans-serif;
+  color: rgba(0,0,0,0.7);
+}
+#SearchByAttribute .secondary-label {
+  font-size: 14px;
+  font-weight: 400;
+  color: rgba(0,0,0,0.58);
+  margin-left: 2px;
+}
+#SearchByAttribute input {
+  font-family: 'Cabin', sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  color: rgba(0,0,0,0.58);
+  padding: 10px 14px 8px 14px;
+  margin: 6px 6px 12px 0px;
+  width: 100%;
+  outline: none;
+  border: 0px;
+  border-bottom: 1px solid #d3d3d3;
+  background: #fff;
+  border-bottom-left-radius: 15px;
+  transition: 0.2s ease;
+}
+#SearchByAttribute input:hover {
+  border-color: #c3c3c3;
+  border-bottom-left-radius: 10px;
+}
+#SearchByAttribute input:focus {
+  border-color: #a3a3a3;
+  border-bottom-left-radius: 0px;
+}
+
+button {
+  margin-top: 12px;
+  margin-bottom: -6px;
+  font-size: 18px;
+  font-family: 'Cabin', sans-serif;
+  color: rgba(0,0,0,0.58);
+  padding: 10px;
+  width: 100%;
+  border: 0px;
+  outline: none;
+  border: 1px solid #d3d3d3;
+  border-radius: 8px;
+  position: relative;
+  cursor: pointer;
+  transition: 0.15s ease;
+}
+.send-arrow {
+  /*background: url('../assets/img/send-button.png');*/ 
+  background-size: cover;
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  opacity: 0.3;
+  transition: 0.15s ease;
+}
+button:hover {
+  box-shadow: 0 1px 2px 0 rgba(60,64,67,0.302), 0 1px 3px 1px rgba(60,64,67,0.149);
+}
+button:active {
+  box-shadow: 0 1px 3px 0 rgba(60,64,67,0.302), 0 4px 8px 3px rgba(60,64,67,0.149);
+}
+button .send-arrow {
+  opacity: 0.6;
+  right: 10px;
+}
+.input-group {
+  margin: 16px 0px -4px 0px;
+}

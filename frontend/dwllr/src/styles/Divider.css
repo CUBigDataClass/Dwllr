@@ -16,15 +16,23 @@
 
 #Divider .vertical-line.top-half {
   top: 0;
-  height: calc(40% - 100px);
+  height: calc(45% - 80px);
 }
 
 #Divider .vertical-line.bottom-half {
   bottom: 0;
-  height: calc(60% - 100px);
+  height: calc(55% - 80px);
 }
 
 #Divider .text {
+  font-family: 'Roboto Condensed';
   top: calc(40%);
-  font-size: 
+  font-size: 42px;
+  color: #aaa;
+  text-align: center;
+  position: absolute;
+  width: 100%;
+  top: calc(45% - 30px);
+  z-index: 11;
+  font-weight: 400;
 }

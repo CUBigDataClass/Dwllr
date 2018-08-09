@@ -5,7 +5,7 @@ import '../styles/Logo.css';
 export default class Logo extends React.Component {
   render () {
     return (
-      <Link to="/" id="Logo" className={this.props.onSearchPage ? 'onSearchPage' : ''}>
+      <Link to="/" id="Logo" className={this.props.onResultsPage ? 'onResultsPage' : ''}>
         <h1>Dwllr.</h1>
         <h2>Find your perfect place</h2>
       </Link>

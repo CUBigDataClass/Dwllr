@@ -7,7 +7,7 @@ import App from './App';
 const Root = ({ store, history }) => (
   <Provider store={store}>
     <Router history={history}>
-      <Route exact path="/(|search)" component={App} />
+      <App />
     </Router>
   </Provider>
 );

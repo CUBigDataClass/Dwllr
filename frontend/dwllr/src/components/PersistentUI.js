@@ -1,20 +1,19 @@
 import React from 'react';
 import Logo from './Logo';
 import SearchByAttribute from './SearchByAttribute';
-import SearchByCity from './SearchByCity';
+import SearchByCityContainer from '../containers/SearchByCityContainer';
 import MapOverlay from './MapOverlay';
 
 export default class PersistentUI extends React.Component {
   render() {
-    console.log(this.props);
-    const onSearchPage = this.props.location.pathname === '/search' ? true : false;
+    const onResultsPage = this.props.location.pathname === '/results' ? true : false;
     
     return (
       <React.Fragment>
-        <Logo onSearchPage={onSearchPage} />
-        <SearchByAttribute onSearchPage={onSearchPage} />
-        <SearchByCity onSearchPage={onSearchPage} />
-        <MapOverlay onSearchPage={onSearchPage} />
+        <Logo onResultsPage={onResultsPage} />
+        <SearchByAttribute onResultsPage={onResultsPage} />
+        <SearchByCityContainer onResultsPage={onResultsPage} />
+        <MapOverlay onResultsPage={onResultsPage} />
       </React.Fragment>
     )
   }

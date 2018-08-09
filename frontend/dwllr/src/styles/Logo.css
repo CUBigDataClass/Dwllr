@@ -2,7 +2,7 @@
   position: absolute;
   top: 0px;
   left: 45px;
-  z-index: 11;
+  z-index: 14;
   transition: 0.75s ease;
   color: inherit;
   text-decoration: inherit;
@@ -18,11 +18,11 @@
   transition: 0.3s ease;
 }
 
-#Logo.onSearchPage:hover h1 {
+#Logo.onResultsPage:hover h1 {
   color: rgba(0,0,0,0.7);
 }
 
-#Logo.onSearchPage:hover h2 {
+#Logo.onResultsPage:hover h2 {
   transform: translateX(8px);
 }
 
@@ -33,6 +33,6 @@
   margin-top: -1.2em;
 }
 
-#Logo.onSearchPage {
-  transform: scale(0.8) translate(-50px, -26px) !important  
+#Logo.onResultsPage {
+  transform: scale(0.8) translate(-44px, -26px) !important  
 }

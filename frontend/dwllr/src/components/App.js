@@ -9,7 +9,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Route exact path="/(|search)" component={PersistentUI} />
+        <Route path="/(|results)" component={PersistentUI} />
         <Route exact path="/" component={Divider}/>
         <CustomMapContainer />
       </div>
