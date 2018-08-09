@@ -32,33 +32,27 @@ export default class CustomMap extends PureComponent {
     zoom: 5,
   }
   
-  isInTransition = false;
-  
   updateLocation(coords) {
     this.mapRef.panTo(coords);
   }
   
   componentDidUpdate(prevProps) {
     if (prevProps.onResultsPage === false && this.props.onResultsPage) {
-      this.isInTransition = true;
       setTimeout(() => {
         this.setState((prevState, props) => ({
           zoom: 6.45,
           isMarkerShown: true,
         }));
         this.updateLocation(this.props.coords);
-        this.isInTransition = false;
       }, 300);
     }
     else if (prevProps.onResultsPage && !this.props.onResultsPage) { 
-      this.isInTransition = true;
       setTimeout(() => {
         this.setState((prevState, props) => ({
           zoom: 5,
           isMarkerShown: false,
         }));
         this.updateLocation(defaultCoords);
-        this.isInTransition = false;
       }, 100);
     }
     else if (prevProps.coords !== this.props.coords) {

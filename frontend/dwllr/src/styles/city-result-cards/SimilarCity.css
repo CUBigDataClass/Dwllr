@@ -1,0 +1,33 @@
+#SimilarCity {
+  display: inline-block;
+  width: fit-content;
+  border: 1px solid #d3d3d3;
+  border-radius: 8px;
+  padding: 6px 24px 12px 20px;
+  margin-top: 14px;
+  margin-right: 18px;
+  cursor: pointer;
+  transition: 0.15s ease;
+}
+
+#SimilarCity h1 {
+  font-family: 'Roboto Condensed';
+  color: rgba(0,0,0,0.7);
+  font-size: 18px;
+  line-height: 18px;
+  margin-top: 11px;
+}
+#SimilarCity h2 {
+  font-family: 'Cabin';
+  color: rgba(0,0,0,0.58);
+  font-size: 14px;
+  line-height: 0px;
+  margin-top: -4px;
+}
+
+#SimilarCity:hover {
+  box-shadow: 0 1px 2px 0 rgba(60,64,67,0.302), 0 1px 3px 1px rgba(60,64,67,0.149);;
+}
+#SimilarCity:active {
+  box-shadow: 1px 3px 0 rgba(60,64,67,0.302), 0 4px 8px 3px rgba(60,64,67,0.149);
+}

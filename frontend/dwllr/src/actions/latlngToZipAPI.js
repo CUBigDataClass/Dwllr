@@ -1,14 +1,13 @@
 import { makeFetchAction } from 'redux-api-call';
 import { createSelector } from 'reselect';
 import { flow, get, filter } from 'lodash/fp';
+import { FETCH_ZIP } from '../constants/actionTypes';
+import { googleMapsUrl, key } from '../constants/mapsAPI';
 
-const mapsUrl = 'https://maps.googleapis.com/maps/api/geocode/json';
-const key = 'AIzaSyDUphyKwQ4lJqCpQjn8-F_FuGyTxjp7vV8';
-
-export const zipAPI = makeFetchAction('FETCH_ZIP', (params) => ({ 
-  endpoint: `${mapsUrl}?latlng=${params.lat},${params.lng}&sensor=false&key=${key}`
+export const zipAPI = makeFetchAction(FETCH_ZIP, (params) => ({ 
+  endpoint: `${googleMapsUrl}?latlng=${params.lat},${params.lng}&sensor=false&key=${key}`
 }));
- 
+
 export const resultsSelector = flow(zipAPI.dataSelector, get('results'));
 export const zipSelector = createSelector(resultsSelector, results => {
 

@@ -1,0 +1,3 @@
+export const CITY_SEARCH_SUBMITTED = 'STORE_PLACE';
+export const FETCH_ZIP = 'FETCH_ZIP';
+export const FETCH_CITY_DATA = 'FETCH_CITY_DATA';

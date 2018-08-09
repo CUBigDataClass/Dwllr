@@ -24,8 +24,8 @@ export default class SearchByAttribute extends React.Component{
   
   render () {
     const onResultsPage = this.props.onResultsPage;
-    const translateData = {transform: `translate(-${this.state.width/4 - 255}px, -185px)`};
-    console.log(translateData);
+    const translateData = {transform: `translate(-${this.state.width/4 - 255}px, -${this.state.height/5 - 2}px)`};
+    
     return (
       <div 
         id="SearchByAttribute"

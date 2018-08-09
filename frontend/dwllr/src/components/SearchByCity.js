@@ -21,8 +21,8 @@ class SearchByCity extends React.Component {
   }
   
   componentDidUpdate(prevProps) {
-    console.log('props: ', this.props);
     // move this route change to App.js
+    console.log(prevProps);
     if (this.props.zip !== null && prevProps.zip !== this.props.zip) {
       this.props.history.push(`/results`);
     }
@@ -51,7 +51,7 @@ class SearchByCity extends React.Component {
   
   render () {
     const onResultsPage = this.props.onResultsPage;
-    const translateData = {transform: `translate(-${(3*this.state.width)/4 - 255}px, ${278}px)`};
+    const translateData = {transform: `translate(-${(3*this.state.width)/4 - 255}px, ${-(this.state.height/5 - 465)}px)`};
     
     return (
       <div 
