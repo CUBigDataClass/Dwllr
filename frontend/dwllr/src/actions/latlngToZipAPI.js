@@ -16,6 +16,7 @@ export const zipSelector = createSelector(resultsSelector, results => {
   
   const resultKeys = Object.keys(results);
   
+  // refactor me 
   for (let i = 0; i < resultKeys.length; i++) {
     const result = results[resultKeys[i]];
     if (result.types.includes('postal_code')) {

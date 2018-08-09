@@ -3,6 +3,8 @@ import { compose, withProps } from 'recompose';
 import { withScriptjs, withGoogleMap, GoogleMap, Marker } from "react-google-maps";
 import '../styles/CustomMap.css';
 
+const defaultCoords = {lat: 40.0902, lng: -98.7129}
+
 const ComposedMap = compose(
   withProps({
     googleMapURL: "null",
@@ -15,38 +17,67 @@ const ComposedMap = compose(
 )(props => 
   <GoogleMap
     defaultZoom={5}
-    defaultCenter={{lat: 40.0902, lng: -98.7129}}
+    defaultCenter={defaultCoords}
     ref={props.onMapMounted}
+    zoom={props.zoom}
   >
-    {props.isMarkerShown && <Marker position={{ lat: -34.397, lng: 150.644 }} onClick={props.onMarkerClick} />}
+    {props.isMarkerShown && <Marker position={props.markerLocation} animation={2} />}
   </GoogleMap>
 );
 
 export default class CustomMap extends PureComponent {
+  
   state = {
     isMarkerShown: false,
+    zoom: 5,
   }
   
-  componentDidMount() {
+  isInTransition = false;
+  
+  updateLocation(coords) {
+    this.mapRef.panTo(coords);
   }
   
-  pan = () => {
-    setTimeout(() => {
-      console.log('pan');
-      //this.mapRef.panTo({lat: 44.0902, lng: -102.7129});
-    }, 3000);
+  componentDidUpdate(prevProps) {
+    if (prevProps.onResultsPage === false && this.props.onResultsPage) {
+      this.isInTransition = true;
+      setTimeout(() => {
+        this.setState((prevState, props) => ({
+          zoom: 6.45,
+          isMarkerShown: true,
+        }));
+        this.updateLocation(this.props.coords);
+        this.isInTransition = false;
+      }, 300);
+    }
+    else if (prevProps.onResultsPage && !this.props.onResultsPage) { 
+      this.isInTransition = true;
+      setTimeout(() => {
+        this.setState((prevState, props) => ({
+          zoom: 5,
+          isMarkerShown: false,
+        }));
+        this.updateLocation(defaultCoords);
+        this.isInTransition = false;
+      }, 100);
+    }
+    else if (prevProps.coords !== this.props.coords) {
+      this.updateLocation(this.props.coords);
+    }
   }
   
   setRef = ref => {
-    console.log('ref: ', ref);
     this.mapRef = ref;
-    this.pan();
-    //this.mapRef.setOptions({draggable: false});
   }
   
   render() {
     return (
-      <ComposedMap onMapMounted={this.setRef} isMarkerShown={this.state.isMarkerShown} panTo={this.state.panLoc}/>
+      <ComposedMap 
+        onMapMounted={ref => this.mapRef=ref} 
+        zoom={this.state.zoom} 
+        isMarkerShown={this.state.isMarkerShown} 
+        markerLocation={this.props.coords}
+      />
     )
   }
 }

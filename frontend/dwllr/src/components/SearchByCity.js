@@ -22,7 +22,7 @@ class SearchByCity extends React.Component {
   
   componentDidUpdate(prevProps) {
     console.log('props: ', this.props);
-    // move this to App.js
+    // move this route change to App.js
     if (this.props.zip !== null && prevProps.zip !== this.props.zip) {
       this.props.history.push(`/results`);
     }
@@ -32,7 +32,6 @@ class SearchByCity extends React.Component {
       prevProps.zip !== this.props.zip
     ) {
       // fetch city data from custom api
-      console.log('fetch');
       this.props.fetchCityData(this.props.zip);
     }
   }

@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import CustomMap from '../components/CustomMap';
 
 const mapStateToProps = (state, ownProps) => ({
+  coords: state.citySearchSubmitted.coords,
   ...ownProps,
 });
 

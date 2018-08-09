@@ -36,3 +36,12 @@
   z-index: 11;
   font-weight: 400;
 }
+/*
+.fade-leave {
+  opacity: 0;
+}
+.fade-leave.fade-leave-active {
+  opacity: 1;
+  transition: 0.3s ease;
+}
+*/

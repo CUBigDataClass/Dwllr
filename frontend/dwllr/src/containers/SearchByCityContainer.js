@@ -1,7 +1,7 @@
 import SearchByCity from '../components/SearchByCity';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { zipAPI, zipSelector } from '../actions/latlngToZipAPI';
+import { zipAPI, zipSelector } from '../actions/latlngToZipAPI.js';
 import { cityDataAPI, cityDataSelector } from '../actions/cityDataAPI';
 import { citySearchSubmitted } from '../actions/actions';
 
