@@ -1,7 +1,7 @@
 import SearchByCity from '../components/SearchByCity';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { zipAPI, zipSelector } from '../actions/latlngToZipAPI.js';
+import { zipAPI, zipSelector } from '../actions/latlngToZipAPI';
 import { cityDataAPI, cityDataSelector } from '../actions/cityDataAPI';
 import { citySearchSubmitted } from '../actions/actions';
 
@@ -17,7 +17,7 @@ const mapStateToProps = (state, ownProps) => {
     cityData: cityDataSelector(state),
 }};
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = dispatch => {
   return bindActionCreators({ 
     fetchZip: zipAPI.actionCreator,
     fetchCityData: cityDataAPI.actionCreator,

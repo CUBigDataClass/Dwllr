@@ -48,6 +48,7 @@ export default class SimilarCity extends React.Component {
   }
   
   updateCurrentCity() {
+    this.props.fetchZip(this.city.coords);
     this.props.citySearchSubmitted(this.city.name, this.city.coords);
     this.props.fetchCityData(this.props.zip);
   }

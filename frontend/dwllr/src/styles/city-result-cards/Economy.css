@@ -1,0 +1,28 @@
+#Economy {
+  margin-top: -22px;
+  margin-bottom: -8px;
+}
+
+#Economy .third {
+  width: 33%;
+  padding-left: 6px;
+  display: inline-block;
+}
+#Economy .data {
+  color: rgba(0,0,0,0.58);
+  padding-right: 4px;
+}
+#Economy h1 {
+  color: rgba(0,0,0,0.7);
+  font-size: 32px;
+  text-align: center;
+}
+#Economy h2 {
+  margin-top: -14px;
+  text-align: center;
+}
+#Economy .sub {
+  font-size: 18px;
+  color: rgba(0,0,0,0.54);
+  padding-left: 6px;
+}

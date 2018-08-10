@@ -1,3 +1,10 @@
+#CityResultHeader {
+  transition: 1s ease;
+}
+#CityResultHeader.hide-header {
+  transition: 0s;
+}
+
 #CityResultHeader h1 {
   font-family: 'Roboto Condensed', sans-serif;
   font-weight: 700;

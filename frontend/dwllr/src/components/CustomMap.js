@@ -37,6 +37,7 @@ export default class CustomMap extends PureComponent {
   }
   
   componentDidUpdate(prevProps) {
+    console.log('map props: ', this.props);
     if (prevProps.onResultsPage === false && this.props.onResultsPage) {
       setTimeout(() => {
         this.setState((prevState, props) => ({

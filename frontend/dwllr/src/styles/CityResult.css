@@ -5,3 +5,10 @@
   z-index: 14;
   width: 600px;
 }
+
+.show-header {
+  opacity: 1;
+}
+.hide-header {
+  opacity: 0;
+}
