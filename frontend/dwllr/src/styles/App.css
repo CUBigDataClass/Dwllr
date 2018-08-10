@@ -9,3 +9,12 @@
 h1, h2, h3 {
   font-family: 'Roboto Condensed', sans-serif; 
 }
+
+.hide-yetti {
+  opacity: 0;
+}
+
+.show-yetti {
+  opacity: 1;
+  transform:translateY(-30px);
+}
