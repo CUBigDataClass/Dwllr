@@ -14,7 +14,7 @@
 	- sudo mkdir /data/db
 2. Download datasets ([https://www.dropbox.com/sh/br77g2q7av07ps9/AAAzjvd-VXK0DRY-MCJ8USeha?dl=0]()), unzip, and place them in some folder locally (not /data/datasets, that's used for some kind of docker magic)
 3. Modify docker-compose.yml
-	- Delete line 17, `/data/datasets/:/home/user/Documents/dataSets/`
+	- Delete line 17, `/data/db/:/var/lib/cassandra`
 	- Change `/data/datasets/:/home/user/Documents/dataSets/` to `<where your datasets are>:/home/user/Documents/dataSets/`
 4. Docker -> Preferences -> File Sharing -> click `+` -> enter `/data` -> click `Apply & Restart`
 5. docker-compose up -d cassandra
